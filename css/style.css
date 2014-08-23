@@ -185,6 +185,7 @@ section h2 {
 	letter-spacing: 5px;
 	padding-bottom: 50px;
 	text-transform: uppercase;
+	position: relative;
 }
 
 section h2 span {
