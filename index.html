@@ -42,8 +42,8 @@
 	<nav data-nav="mainnav" class="is-closed">
 		<ul data-height>
 			<li><a href="#top">Rena.to</a></li>
-			<li><a href="#about">Sobre</a></li>
 			<li><a href="#works">Trabalhos</a></li>
+			<li><a href="#about">Sobre</a></li>
 			<li><a href="#contact">Contato</a></li>
 		</ul>
 	</nav>
@@ -59,31 +59,7 @@
 		<h2 class="wow fadeIn">Trabalhos, projetos <span>& drops</span></h2>
 		<div class="og-grid-wrapper wow fadeIn">
 			<ul id="og-grid" class="og-grid">
-			    <li>
-			        <a href="http://melhoridademoderna.com.br/" data-largesrc="img/works/mim-full.png" data-title="Melhor Idade Moderna" data-description="Todo o frontend e backend da landing page. <br />Desenvolvido em parceria com a <a href='http://nokitua.com.br' target='_blank'>Nokitua</a> e <a href='http://meshup.com.br' target='_blank'>Mesh.up</a>.">
-			            <img src="img/works/mim.png" alt="Melhor Idade Moderna"/>
-			        </a>
-			    </li>
-			    <li>
-			        <a href="http://renatorib.github.io/janimate/" data-largesrc="img/works/janimate-full.png" data-title="jAnimate" data-description="Plugin de jQuery para Animate.css.<br /><a href='http://github.com/renatorib/janimate' target='_blank'>Forke o projeto no Github</a>">
-			            <img src="img/works/janimate.png" alt="jAnimate"/>
-			        </a>
-			    </li>
-			    <li>
-			        <a href="http://codepen.io/renatorib/full/gBLDA" data-largesrc="img/works/mouse_balls-full.png" data-title="Mouse Balls" data-description="Codepen criado para estudos de mouse events.<br />Todas as animações com css transform e dinamicidade com jQuery. Também foi usado sass e prefixfree." data-link-text="Veja o pen">
-			            <img src="img/works/mouse_balls.png" alt="Mouse Balls"/>
-			        </a>
-			    </li>
-			    <li>
-			        <a href="http://codepen.io/renatorib/full/aKleE" data-link-text="Veja o pen" data-largesrc="img/works/balloons-full.png" data-title="Balloons Game" data-description="Jogo criado usando html, animações em css e javascript.<br /> Também foi usado jQuery, prefixfree e sass.">
-			            <img src="img/works/balloons.png" alt="Balloons"/>
-			        </a>
-			    </li>
-			    <li>
-			        <a href="http://codepen.io/renatorib/full/extCA" data-link-text="Veja o pen" data-largesrc="img/works/tinder-full.png" data-title="Tinder CSS3" data-description="Imitação dos efeitos do Tinder com animações em css">
-			            <img src="img/works/tinder.png" alt="Tinder"/>
-			        </a>
-			    </li>
+
 			</ul>
 		</div>
 		<div class="clearfix"></div>
@@ -121,15 +97,47 @@
 	<script src="vendor/wow.js"></script>
 	<script src="vendor/imagesloaded.min.js"></script>
 	<script src="vendor/modernizr.custom.js"></script>
+	<script src="vendor/jquery.tmpl.js"></script>
 
 	<!-- JS -->
 	<script src="js/main.js"></script>
-	<script src="js/grid.js"></script>
+	<script src="js/works.js"></script>
+
+	<!-- templates -->
+	<script type="text/html" id="work-block">
+		<li>
+	        <a 
+	        	href="${url}" 
+	        	data-link-text="${urltext}"
+	        	data-largesrc="img/works/${img}-full.png" 
+	        	data-title="${title}" 
+	        	data-description="${description}" 
+	        >
+	            <img 
+	            	src="img/works/${img}.png" 
+	            	alt="${title}" />
+	        </a>
+	    </li>
+	</script>
 
 	<script>
-		new WOW().init();
-		$(function() {
-			Grid.init();
+		$(function() { 
+			//wow
+			new WOW().init();
+
+			//templates
+			$.template( "work-template", $('#work-block').html() );
+
+			//works
+			$.each(works, function(i, work){
+				$.tmpl( "work-template", work ).appendTo( "#og-grid" );
+			});
+
+			//gridding
+			$.getScript("js/grid.js", function(){
+			   Grid.init();
+			});
+
 		});
 	</script>
 
