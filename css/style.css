@@ -179,26 +179,19 @@ section h2 {
 	margin: 0;
 	font-family: "Raleway", sans-serif;
 	font-weight: 400;
-	font-size: 36px;
+	font-size: 38px;
 	color: #111;
 	text-align: center;
 	letter-spacing: 5px;
 	padding-bottom: 50px;
 	text-transform: uppercase;
 	position: relative;
+	text-rendering: optimizeLegibility;
 }
 
 section h2 span {
 	font-weight: 200;
-	color: #333;
-}
-
-section.light h2 {
-	color: #777;
-}
-
-section.light h2 span {
-	color: #999;
+	color: #222;
 }
 
 section h2:after {
@@ -212,11 +205,8 @@ section h2:after {
 	height: 3px;
 }
 
-section.light h2:after {
-	background: rgb(170, 170, 170);
-}
 
-section.dark h2:after {
+section h2:after {
 	background: rgb(100, 100, 100);
 }
 
@@ -231,9 +221,26 @@ section article {
 	margin: 0 auto;
 }
 
-section article p {
+
+section article p strong {
+	font-weight: 900;
+}
+
+section#about article p {
 	text-indent: 25px;
 	margin: 0;
+	padding: 10px;
+	display: block;
+	width: 50%;
+	float: left;
+	height: 100%;
+	text-align: justify;
+}
+
+@media (max-width: 900px){
+	section#about article p {
+		width: 100%;
+	}
 }
 
 section article a {
@@ -280,4 +287,19 @@ code {
 	background: #fff;
 	padding: 3px 6px;
 	border-radius: 3px;
+}
+
+#og-grid a.block {
+	height: 250px;
+	width: 250px;
+	background-size: 250px 250px;
+	background-position: center;
+	border: 1px solid #ccc;
+	-webkit-filter: grayscale(1);
+	transition: all .3s linear;
+}
+
+#og-grid a.block:hover {
+	-webkit-filter: grayscale(0);
+	transition: all .2s linear;
 }

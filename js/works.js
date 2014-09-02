@@ -1,11 +1,11 @@
 var works = [
-	/* {
+	{
 		title: 'Plaay Beta',
 		url: 'http://beta.plaay.com.br/',
 		urltext: 'Visite o site',
 		img: 'plaaybeta',
 		description: "Landing page do novo <a href='http://plaay.com.br/'>Plaay</a>.<br />Design por: <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
-	}, */
+	},
 	{
 		title: 'Melhor Idade Moderna',
 		url: 'http://melhoridademoderna.com.br/',
