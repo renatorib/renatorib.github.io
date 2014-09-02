@@ -289,7 +289,7 @@ code {
 	border-radius: 3px;
 }
 
-#og-grid a.block {
+#og-grid li a.block {
 	height: 250px;
 	width: 250px;
 	background-size: 250px 250px;
@@ -299,6 +299,7 @@ code {
 	transition: all .3s linear;
 }
 
+#og-grid li.og-expanded a.block,
 #og-grid a.block:hover {
 	-webkit-filter: grayscale(0);
 	transition: all .2s linear;
