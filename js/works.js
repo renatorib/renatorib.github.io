@@ -1,10 +1,17 @@
 var works = [
 	{
+		title: 'Plaay Desktop App',
+		url: 'http://beta.plaay.com.br',
+		urltext: 'Visite o site do App',
+		img: 'plaay-app',
+		description: "Todo o frontend do aplicativo desktop do novo Plaay para Windows e Mac. Feito em html, css e backbone marionette com node-webkit.<br />Design por: <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
+	},
+	{
 		title: 'Plaay Beta',
 		url: 'http://beta.plaay.com.br/',
 		urltext: 'Visite o site',
 		img: 'plaaybeta',
-		description: "Landing page do novo <a href='http://plaay.com.br/'>Plaay</a>.<br />Design por: <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
+		description: "Frontend da landing page do novo <a href='http://plaay.com.br/'>Plaay</a>. Feito em wordpress.<br />Design por: <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
 	},
 	{
 		title: 'Melhor Idade Moderna',
@@ -43,7 +50,7 @@ var works = [
 	},
 ];
 
-var boilerplate = 
+var copy_paste = 
 	{
 		title: '',
 		url: '',
