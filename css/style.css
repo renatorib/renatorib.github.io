@@ -31,11 +31,16 @@ html[xmlns] .clearfix {
     height: 1%;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	font-family: "Raleway";
 	background: #ecf0f1;
 	margin: 0;
 	height: 100%;
+	-webkit-font-smoothing: antialiased;
 }
 
 header {
@@ -175,7 +180,7 @@ section.light {
 	background: #fff;
 }
 
-section h2 {
+section > h2 {
 	margin: 0;
 	font-family: "Raleway", sans-serif;
 	font-weight: 400;
@@ -189,12 +194,12 @@ section h2 {
 	text-rendering: optimizeLegibility;
 }
 
-section h2 span {
+section > h2 span {
 	font-weight: 200;
 	color: #222;
 }
 
-section h2:after {
+section > h2:after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -206,7 +211,7 @@ section h2:after {
 }
 
 
-section h2:after {
+section > h2:after {
 	background: rgb(100, 100, 100);
 }
 
@@ -303,4 +308,8 @@ code {
 #og-grid a.block:hover {
 	-webkit-filter: grayscale(0);
 	transition: all .2s linear;
+}
+
+#portfolio {
+	margin: 0 auto;
 }
