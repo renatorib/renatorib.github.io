@@ -5,6 +5,8 @@ function fullpane(){
 	function closeFullPane(){
 		$('.fullpane').jAnimate('fadeOutDown fast exited', function(self){ $(self).hide() });
 		$('body').css('overflow', 'scroll');
+		history.pushState("", document.title, window.location.pathname + window.location.search);
+		return false;
 	}
 
 	$('.fullpane .close').click(function(e){
