@@ -36,6 +36,7 @@ html {
 }
 
 body {
+	display: none;
 	font-family: "Raleway";
 	background: #ecf0f1;
 	margin: 0;
@@ -51,6 +52,13 @@ header {
 	width: 100%;
 	position: fixed;
 	z-index: 1;
+}
+
+.valign {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translatey(-50%) translatex(-50%);
 }
 
 header > div {
@@ -89,9 +97,9 @@ header h1 {
 
 header small {
 	margin-top: 10px;
-	font-size: 16px;
-	font-weight: 200;
-	color: #BFFF00;
+	font-size: 14px;
+	font-weight: bold;
+	color: #69DD00;
 	text-transform: uppercase;
 }
 
@@ -292,22 +300,6 @@ code {
 	background: #fff;
 	padding: 3px 6px;
 	border-radius: 3px;
-}
-
-#og-grid li a.block {
-	height: 250px;
-	width: 250px;
-	background-size: 250px 250px;
-	background-position: center;
-	border: 1px solid #ccc;
-	-webkit-filter: grayscale(1);
-	transition: all .3s linear;
-}
-
-#og-grid li.og-expanded a.block,
-#og-grid a.block:hover {
-	-webkit-filter: grayscale(0);
-	transition: all .2s linear;
 }
 
 #portfolio {
