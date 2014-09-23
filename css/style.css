@@ -53,6 +53,10 @@ header {
 	z-index: 1;
 }
 
+header .title {
+	opacity: 0;
+}
+
 .valign {
 	position: absolute;
 	top: 50%;
