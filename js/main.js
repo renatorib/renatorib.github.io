@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-	$('body').fadeIn('300');
-
 	var main = {
 		header: function(){
 			var windowheight = $(window).height();
