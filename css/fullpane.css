@@ -135,6 +135,8 @@
 	line-height: 30px;
 	font-family: "Droid Serif";
 	color: #888;
+	overflow-x: scroll;
+	height: calc(100% - 139px);
 }
 
 .fullpane p a {

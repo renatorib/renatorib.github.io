@@ -21,12 +21,7 @@ $(document).ready(function(){
 			var offset = $(window).scrollTop();
 			var opacity = 1 - Math.abs(offset)/550;
 			var blur = offset/150;
-			$('header div')
-				.css('opacity', opacity)
-				.css('-webkit-filter', "blur(" + blur + "px)")
-				.css('-moz-filter', "blur(" + blur + "px)")
-				.css('-o-filter', "blur(" + blur + "px)")
-				.css('filter', "blur(" + blur + "px)");
+
 		}
 	}
 

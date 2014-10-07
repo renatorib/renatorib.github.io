@@ -167,16 +167,16 @@
 	border-color: rgba(255,255,255,.9);
 }
 
+.grid li:hover ~ li {
+	opacity: .6;
+	transition: all .3s ease;
+}
+
 .grid:hover li.shown:hover {
 	opacity: 1;
 	transition: all .3s ease;
 }
 
-
-.grid:hover li {
-	opacity: .8;
-	transition: all .3s ease;
-}
 
 .grid li {
 	transition: all .3s ease;
