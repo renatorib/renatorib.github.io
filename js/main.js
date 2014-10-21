@@ -4,7 +4,7 @@ $(document).ready(function(){
 		header: function(){
 			var windowheight = $(window).height();
 			$('[data-height]').height(windowheight);
-			$('[data-valign]').css('padding-top', function(){
+			$('[data-valign]').css('top', function(){
 				return ($('header').height() - $(this).height())/2 + $(window).scrollTop()/3;
 			});
 			$('header').css('position', 'inherit');

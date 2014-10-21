@@ -1,0 +1,498 @@
+div.orbit {
+  /* background-color: rgba(0, 0, 0, 0.1); */
+}
+div.orbit.orbit-1 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -2.72s;
+  -moz-animation-delay: -2.72s;
+  animation-delay: -2.72s;
+  position: absolute;
+  top: 58.4%;
+  right: 0;
+  bottom: 0;
+  left: -9.4%;
+  width: 118.8%;
+}
+div.orbit.orbit-1:after {
+  -webkit-animation-delay: -2.72s;
+  -moz-animation-delay: -2.72s;
+  animation-delay: -2.72s;
+  height: 4px;
+  width: 4px;
+}
+div.orbit.orbit-2 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.12s;
+  -moz-animation-delay: -0.12s;
+  animation-delay: -0.12s;
+  position: absolute;
+  top: 87.8%;
+  right: 0;
+  bottom: 0;
+  left: -0.4%;
+  width: 100.8%;
+}
+div.orbit.orbit-2:after {
+  -webkit-animation-delay: -0.12s;
+  -moz-animation-delay: -0.12s;
+  animation-delay: -0.12s;
+  height: 8px;
+  width: 8px;
+}
+div.orbit.orbit-3 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.92s;
+  -moz-animation-delay: -0.92s;
+  animation-delay: -0.92s;
+  position: absolute;
+  top: 47.2%;
+  right: 0;
+  bottom: 0;
+  left: -10%;
+  width: 120%;
+}
+div.orbit.orbit-3:after {
+  -webkit-animation-delay: -0.92s;
+  -moz-animation-delay: -0.92s;
+  animation-delay: -0.92s;
+  height: 12px;
+  width: 12px;
+}
+div.orbit.orbit-4 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -1.44s;
+  -moz-animation-delay: -1.44s;
+  animation-delay: -1.44s;
+  position: absolute;
+  top: 40.2%;
+  right: 0;
+  bottom: 0;
+  left: -9.4%;
+  width: 118.8%;
+}
+div.orbit.orbit-4:after {
+  -webkit-animation-delay: -1.44s;
+  -moz-animation-delay: -1.44s;
+  animation-delay: -1.44s;
+  height: 5px;
+  width: 5px;
+}
+div.orbit.orbit-5 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -2.88s;
+  -moz-animation-delay: -2.88s;
+  animation-delay: -2.88s;
+  position: absolute;
+  top: 17.8%;
+  right: 0;
+  bottom: 0;
+  left: -3.4%;
+  width: 106.8%;
+}
+div.orbit.orbit-5:after {
+  -webkit-animation-delay: -2.88s;
+  -moz-animation-delay: -2.88s;
+  animation-delay: -2.88s;
+  height: 6px;
+  width: 6px;
+}
+div.orbit.orbit-6 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.68s;
+  -moz-animation-delay: -0.68s;
+  animation-delay: -0.68s;
+  position: absolute;
+  top: 13.6%;
+  right: 0;
+  bottom: 0;
+  left: -1.6%;
+  width: 103.2%;
+}
+div.orbit.orbit-6:after {
+  -webkit-animation-delay: -0.68s;
+  -moz-animation-delay: -0.68s;
+  animation-delay: -0.68s;
+  height: 12px;
+  width: 12px;
+}
+div.orbit.orbit-7 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -2.24s;
+  -moz-animation-delay: -2.24s;
+  animation-delay: -2.24s;
+  position: absolute;
+  top: -0.4%;
+  right: 0;
+  bottom: 0;
+  left: 8.6%;
+  width: 82.8%;
+}
+div.orbit.orbit-7:after {
+  -webkit-animation-delay: -2.24s;
+  -moz-animation-delay: -2.24s;
+  animation-delay: -2.24s;
+  height: 5px;
+  width: 5px;
+}
+div.orbit.orbit-8 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -2s;
+  -moz-animation-delay: -2s;
+  animation-delay: -2s;
+  position: absolute;
+  top: -14.4%;
+  right: 0;
+  bottom: 0;
+  left: 26.6%;
+  width: 46.8%;
+}
+div.orbit.orbit-8:after {
+  -webkit-animation-delay: -2s;
+  -moz-animation-delay: -2s;
+  animation-delay: -2s;
+  height: 6px;
+  width: 6px;
+}
+div.orbit.orbit-9 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -1.36s;
+  -moz-animation-delay: -1.36s;
+  animation-delay: -1.36s;
+  position: absolute;
+  top: 8%;
+  right: 0;
+  bottom: 0;
+  left: 2%;
+  width: 96%;
+}
+div.orbit.orbit-9:after {
+  -webkit-animation-delay: -1.36s;
+  -moz-animation-delay: -1.36s;
+  animation-delay: -1.36s;
+  height: 12px;
+  width: 12px;
+}
+div.orbit.orbit-10 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -3.28s;
+  -moz-animation-delay: -3.28s;
+  animation-delay: -3.28s;
+  position: absolute;
+  top: 36%;
+  right: 0;
+  bottom: 0;
+  left: -8.8%;
+  width: 117.6%;
+}
+div.orbit.orbit-10:after {
+  -webkit-animation-delay: -3.28s;
+  -moz-animation-delay: -3.28s;
+  animation-delay: -3.28s;
+  height: 9px;
+  width: 9px;
+}
+div.orbit.orbit-11 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.88s;
+  -moz-animation-delay: -0.88s;
+  animation-delay: -0.88s;
+  position: absolute;
+  top: 96.2%;
+  right: 0;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+}
+div.orbit.orbit-11:after {
+  -webkit-animation-delay: -0.88s;
+  -moz-animation-delay: -0.88s;
+  animation-delay: -0.88s;
+  height: 6px;
+  width: 6px;
+}
+div.orbit.orbit-12 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.04s;
+  -moz-animation-delay: -0.04s;
+  animation-delay: -0.04s;
+  position: absolute;
+  top: 101.8%;
+  right: 0;
+  bottom: 0;
+  left: 9.8%;
+  width: 80.4%;
+}
+div.orbit.orbit-12:after {
+  -webkit-animation-delay: -0.04s;
+  -moz-animation-delay: -0.04s;
+  animation-delay: -0.04s;
+  height: 12px;
+  width: 12px;
+}
+div.orbit.orbit-13 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -3.2s;
+  -moz-animation-delay: -3.2s;
+  animation-delay: -3.2s;
+  position: absolute;
+  top: 3.8%;
+  right: 0;
+  bottom: 0;
+  left: 4.4%;
+  width: 91.2%;
+}
+div.orbit.orbit-13:after {
+  -webkit-animation-delay: -3.2s;
+  -moz-animation-delay: -3.2s;
+  animation-delay: -3.2s;
+  height: 6px;
+  width: 6px;
+}
+div.orbit.orbit-14 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -1.36s;
+  -moz-animation-delay: -1.36s;
+  animation-delay: -1.36s;
+  position: absolute;
+  top: 108.8%;
+  right: 0;
+  bottom: 0;
+  left: 18.2%;
+  width: 63.6%;
+}
+div.orbit.orbit-14:after {
+  -webkit-animation-delay: -1.36s;
+  -moz-animation-delay: -1.36s;
+  animation-delay: -1.36s;
+  height: 10px;
+  width: 10px;
+}
+div.orbit.orbit-15 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.24s;
+  -moz-animation-delay: -0.24s;
+  animation-delay: -0.24s;
+  position: absolute;
+  top: 99.0%;
+  right: 0;
+  bottom: 0;
+  left: 7.4%;
+  width: 85.2%;
+}
+div.orbit.orbit-15:after {
+  -webkit-animation-delay: -0.24s;
+  -moz-animation-delay: -0.24s;
+  animation-delay: -0.24s;
+  height: 8px;
+  width: 8px;
+}
+div.orbit.orbit-16 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -2s;
+  -moz-animation-delay: -2s;
+  animation-delay: -2s;
+  position: absolute;
+  top: -0.4%;
+  right: 0;
+  bottom: 0;
+  left: 8%;
+  width: 84%;
+}
+div.orbit.orbit-16:after {
+  -webkit-animation-delay: -2s;
+  -moz-animation-delay: -2s;
+  animation-delay: -2s;
+  height: 8px;
+  width: 8px;
+}
+div.orbit.orbit-17 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -3.84s;
+  -moz-animation-delay: -3.84s;
+  animation-delay: -3.84s;
+  position: absolute;
+  top: 90.6%;
+  right: 0;
+  bottom: 0;
+  left: 0.8%;
+  width: 98.4%;
+}
+div.orbit.orbit-17:after {
+  -webkit-animation-delay: -3.84s;
+  -moz-animation-delay: -3.84s;
+  animation-delay: -3.84s;
+  height: 11px;
+  width: 11px;
+}
+div.orbit.orbit-18 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -0.32s;
+  -moz-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+  position: absolute;
+  top: -4.6%;
+  right: 0;
+  bottom: 0;
+  left: 12.2%;
+  width: 75.6%;
+}
+div.orbit.orbit-18:after {
+  -webkit-animation-delay: -0.32s;
+  -moz-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+  height: 7px;
+  width: 7px;
+}
+div.orbit.orbit-19 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -1.28s;
+  -moz-animation-delay: -1.28s;
+  animation-delay: -1.28s;
+  position: absolute;
+  top: 71%;
+  right: 0;
+  bottom: 0;
+  left: -7.6%;
+  width: 115.2%;
+}
+div.orbit.orbit-19:after {
+  -webkit-animation-delay: -1.28s;
+  -moz-animation-delay: -1.28s;
+  animation-delay: -1.28s;
+  height: 5px;
+  width: 5px;
+}
+div.orbit.orbit-20 {
+  -webkit-animation: orbit-rotate 4s linear infinite;
+  -moz-animation: orbit-rotate 4s linear infinite;
+  animation: orbit-rotate 4s linear infinite;
+  -webkit-animation-delay: -3.88s;
+  -moz-animation-delay: -3.88s;
+  animation-delay: -3.88s;
+  position: absolute;
+  top: 22%;
+  right: 0;
+  bottom: 0;
+  left: -5.2%;
+  width: 110.4%;
+}
+div.orbit.orbit-20:after {
+  -webkit-animation-delay: -3.88s;
+  -moz-animation-delay: -3.88s;
+  animation-delay: -3.88s;
+  height: 8px;
+  width: 8px;
+}
+
+div.orbit:after {
+  -webkit-animation: planet-rotate 4s linear infinite;
+  -moz-animation: planet-rotate 4s linear infinite;
+  animation: planet-rotate 4s linear infinite;
+  background-color: #111;
+  border-radius: 50%;
+  content: '';
+  display: block;
+}
+
+@-webkit-keyframes orbit-rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
+}
+@-moz-keyframes orbit-rotate {
+  from {
+    -moz-transform: rotateY(0deg);
+  }
+  to {
+    -moz-transform: rotateY(360deg);
+  }
+}
+@keyframes orbit-rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg);
+    -o-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes planet-rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(-360deg);
+  }
+}
+@-moz-keyframes planet-rotate {
+  from {
+    -moz-transform: rotateY(0deg);
+  }
+  to {
+    -moz-transform: rotateY(-360deg);
+  }
+}
+@keyframes planet-rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(-360deg);
+    -moz-transform: rotateY(-360deg);
+    -ms-transform: rotateY(-360deg);
+    -o-transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
+  }
+}

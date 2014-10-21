@@ -46,7 +46,7 @@ body {
 header {
 	text-align: center;
 	margin: 0 auto;
-	background: #222222 url(../img/background-cover.jpg) center center no-repeat;
+	background: #222;
 	background-size: cover;
 	height: 100%;
 	width: 100%;
@@ -54,9 +54,44 @@ header {
 	z-index: 1;
 }
 
-header .title {
-	opacity: 0;
+header .title, header .title h1, div.orbit {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
+
+header .title {
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+header .title:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+
+header .title h1 {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  line-height: 200px;
+  height: 200px;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+header .title h1 small {
+	margin-top: -155px;
+	display: block;
+}
+
 
 .valign {
 	position: absolute;
