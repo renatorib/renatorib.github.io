@@ -1,7 +1,7 @@
 var works = [
 	{
 		title: 'The Plot Company',
-		url: 'http://theplotcompany.com.br/',
+		url: 'http://theplotcompany.com/',
 		urltext: 'Visite o site',
 		img: 'theplot',
 		description: "A The Plot Company é uma empresa que produz e ensina a arte e a técnica das tramas para que histórias em diversos formatos se tornem incríveis.<br />Foi feito a maior parte do front-end e desenvolvido em parceria com a <a href='http://nokitua.com.br' target='_blank'>Nokitua</a>."
