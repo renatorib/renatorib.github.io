@@ -1,10 +1,17 @@
 var works = [
 	{
+		title: 'CarPrev',
+		url: 'http://carprev.com.br/',
+		urltext: 'Visite o site',
+		img: 'carprev',
+		description: "A CarPrev é uma startup focada em automação de preventiva veicular e controle de frotas. Ficou em primeiro lugar na maratona de negócios da campus party 2015, na categoria Economia Criativa.<br />Fiz o design e o front-end, utilizei do wordpress como plataforma CMS."
+	},
+    {
 		title: 'The Plot Company',
 		url: 'http://theplotcompany.com/',
 		urltext: 'Visite o site',
 		img: 'theplot',
-		description: "A The Plot Company é uma empresa que produz e ensina a arte e a técnica das tramas para que histórias em diversos formatos se tornem incríveis.<br />Foi feito a maior parte do front-end e desenvolvido em parceria com a <a href='http://nokitua.com.br' target='_blank'>Nokitua</a>."
+		description: "A The Plot Company é uma empresa que produz e ensina a arte e a técnica das tramas para que histórias em diversos formatos se tornem incríveis.<br />Fiz a maior parte do front-end e desenvolvido em parceria com a <a href='http://nokitua.com.br' target='_blank'>Nokitua</a>."
 	},
 	{
 		title: 'Plaay Desktop App',
@@ -12,7 +19,7 @@ var works = [
 		urltext: 'Visite o site do App',
 		img: 'plaay-app',
 		stickers: ['2014', 'Plaay', 'App'],
-		description: "Todo o frontend do aplicativo desktop do novo Plaay para Windows e Mac. Feito em html, css e backbone marionette com node-webkit.<br />Design por: <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
+		description: "Fiz todo o front-end do aplicativo desktop do novo Plaay para Windows e Mac. Feito com html, css e backbone marionette com node-webkit.<br />Design feito por <a href='http://perobelidesign.tumblr.com/'>Felipe Perobeli</a>."
 	},
 	{
 		title: 'jAnimate',
