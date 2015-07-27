@@ -1,5 +1,5 @@
 function fullpane(){
-	
+
 	$.template( "pane-template", $('#fullpane-block').html() );
 
 	function closeFullPane(){
@@ -29,8 +29,8 @@ function fullpane(){
 		window.location.hash = $(this).attr('href').substr(1);
 	});
 
-	if(workPage){
-		$('.open-pane[data-hash="' + workPage + '"').click();
+	if(document.workPage){
+		$('.open-pane[data-hash="' + document.workPage + '"').click();
 	}
 
 };

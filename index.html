@@ -3,11 +3,11 @@
 <head>
 	<title>Frontend Developer - Renato Ribeiro</title>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100,200,400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:200,400,700' rel='stylesheet' type='text/css'>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/hambuglar.css" />
 	<link rel="stylesheet" type="text/css" href="css/grid.css" />
 	<link rel="stylesheet" type="text/css" href="css/fullpane.css" />
@@ -90,9 +90,9 @@
 	<section id="works" class="dark spaced">
 		<h2 class="wow fadeIn">Trabalhos, projetos <span>& drops</span></h2>
 		<section class="grid-wrap">
-		    <ul class="grid swipe-rotate" id="portfolio">
+				<ul class="grid swipe-rotate" id="portfolio">
 
-		    </ul>
+				</ul>
 		</section>
 		<div class="clearfix"></div>
 	</section>
@@ -108,7 +108,7 @@
 				<a href="http://embimarketing.com.br/" target="_blank">EMBI Marketing</a> como <strong>web designer</strong>.
 				Fiz curso intensivo de <strong>PHP</strong> na <a href="http://www.impacta.com.br" target="_blank">Impacta</a> ainda com quinze,
 				e em 2013, com dezessete, comecei na <a href="http://nokitua.com.br/" target="_blank">Nokitua</a> como <strong>desenvolvedor backend
-				e frontend</strong>. Em 2014 tive uma longa passagem com <strong>desenvolvedor frontend</strong> na 
+				e frontend</strong>. Em 2014 tive uma longa passagem com <strong>desenvolvedor frontend</strong> na
 				<a href="http://plaay.com.br/" target="_blank">Plaay</a>, e hoje sou <strong>desenvolvedor frontend</strong> na
 				<a href="http://carprev.com.br/" target="_blank">CarPrev</a>.
 			</p>
@@ -149,9 +149,9 @@
 	<script src="vendor/jquery.tmpl.js"></script>
 
 	<!-- JS -->
-	<script src="js/main.js"></script>
 	<script src="js/fullpane.js"></script>
 	<script src="js/works.js"></script>
+	<script src="js/main.js"></script>
 
 	<!-- templates -->
 	<script type="text/html" id="fullpane-block">
@@ -180,43 +180,6 @@
 				<h3>${title}</h3>
 			</a>
 		</li>
-	</script>
-
-	<script>
-		var hash = '';
-		var workPage = false;
-
-		$(function() {
-
-			//url
-			hash = window.location.hash.substr(1);
-			if(hash.indexOf('work-') >= 0){
-				workPage = hash.substr(5);
-			} else {
-				workPage = false;
-			}
-
-
-			//wow
-			new WOW().init();
-
-			//templates
-			$.template( "work-template", $('#work-block').html() );
-
-			//works
-			$.each(works, function(i, work){
-				work['id'] = i;
-				$.tmpl( "work-template", work ).appendTo( "#portfolio" );
-			});
-
-			fullpane();
-
-			//gridding
-			new GridScrollFx( document.getElementById( 'portfolio' ), {
-				viewportFactor : 0.8
-			} );
-
-		});
 	</script>
 
 </body>

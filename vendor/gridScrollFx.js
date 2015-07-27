@@ -4,14 +4,14 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
 ;( function( window ) {
-	
+
 	'use strict';
-	
+
 	var docElem = window.document.documentElement,
 		support = { animations : Modernizr.cssanimations },
 		animEndEventNames = {
@@ -26,7 +26,7 @@
 	function getViewportH() {
 		var client = docElem['clientHeight'],
 			inner = window['innerHeight'];
-		
+
 		if( client < inner )
 			return inner;
 		else
@@ -34,7 +34,7 @@
 	}
 
 	function scrollY() {
-		return window.pageYOffset || docElem.scrollTop;
+		return (window.pageYOffset || docElem.scrollTop) + 150;
 	}
 
 	// http://stackoverflow.com/a/5598797/989439
@@ -70,7 +70,7 @@
 	}
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
@@ -80,7 +80,7 @@
 
 	function GridItem( el ) {
 		this.el = el;
-		this.anchor = el.querySelector( 'a' ) 
+		this.anchor = el.querySelector( 'a' )
 		this.image = el.querySelector( 'img' );
 		this.desc = el.querySelector( 'h3' );
 	}
@@ -115,7 +115,7 @@
 		}
 	}
 
-	function GridScrollFx( el, options ) {	
+	function GridScrollFx( el, options ) {
 		this.el = el;
 		this.options = extend( {}, this.options );
 		extend( this.options, options );
@@ -127,7 +127,7 @@
 		minDelay : 0,
 		maxDelay : 500,
 		// The viewportFactor defines how much of the appearing item has to be visible in order for the animation to start
-		// if we'd use a value of 0, this would mean that it would add the animation class as soon as the item is in the viewport. 
+		// if we'd use a value of 0, this would mean that it would add the animation class as soon as the item is in the viewport.
 		// If we were to use the value of 1, the animation would only be triggered when we see all of the item in the viewport (100% of it)
 		viewportFactor : 0
 	}
@@ -155,7 +155,7 @@
 				isFitWidth : true,
 				transitionDuration : 0
 			} );
-			
+
 			// the items already shown...
 			self.items.forEach( function( item ) {
 				if( inViewport( item.el ) ) {
@@ -172,9 +172,9 @@
 			var onScrollFn = function() {
 				if( !self.didScroll ) {
 					self.didScroll = true;
-					setTimeout( function() { self._scrollPage(); }, 200 );
+					setTimeout( function() { self._scrollPage(); }, 0 );
 				}
-				
+
 				if( self.itemsRenderedCount === self.itemsCount ) {
 					window.removeEventListener( 'scroll', onScrollFn, false );
 				}
@@ -199,7 +199,7 @@
 				};
 
 				classie.add( item.el, 'animate' );
-				
+
 				// after animation ends add class shown
 				var onEndAnimationFn = function( ev ) {
 					if( support.animations ) {
@@ -229,7 +229,7 @@
 		if ( this.resizeTimeout ) {
 			clearTimeout( this.resizeTimeout );
 		}
-		this.resizeTimeout = setTimeout( delayed, 1000 );
+		this.resizeTimeout = setTimeout( delayed, 1 );
 	}
 
 	// add to global namespace

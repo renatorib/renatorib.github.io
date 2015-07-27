@@ -21,7 +21,6 @@ $(document).ready(function(){
 			var offset = $(window).scrollTop();
 			var opacity = 1 - Math.abs(offset)/550;
 			var blur = offset/150;
-
 		}
 	}
 
@@ -33,8 +32,8 @@ $(document).ready(function(){
 		hideEffect: 'fadeOutLeft fast',
 		toggle: function(e){
 			var target = '[data-nav=' + $(e.currentTarget).data('nav-control') + ']';
-			$(e.currentTarget).hasClass(this.openedClass) ? 
-				this.close(e.currentTarget, target) : 
+			$(e.currentTarget).hasClass(this.openedClass) ?
+				this.close(e.currentTarget, target) :
 				this.open(e.currentTarget, target);
 		},
 		open: function(e, target){
@@ -50,7 +49,7 @@ $(document).ready(function(){
 				$(e).removeClass(self.closedClass).addClass(self.openedClass);
 				$(target).removeClass(self.closedClass).addClass(self.openedClass);
 			}
-		}, 
+		},
 		close: function(e, target){
 			var self = this;
 			if(!this.blocked){
@@ -67,6 +66,40 @@ $(document).ready(function(){
 		},
 	}
 
+	var initialize = {
+		hash: function(){
+		  var hash = window.location.hash.substr(1);
+		  if(hash.indexOf('work-') >= 0)
+		    document.workPage = hash.substr(5);
+		  else
+		    document.workPage = false;
+		},
+		wow: function(){
+			new WOW().init();
+		},
+		template: function(){
+  		$.template( "work-template", $('#work-block').html() );
+			$.each(works, function(i, work){
+		    work['id'] = i;
+		    $.tmpl( "work-template", work).appendTo( "#portfolio" );
+		  });
+		},
+		fullpane: function(){
+  		fullpane();
+		},
+		gridScrollFx: function(){
+			new GridScrollFx( document.getElementById( 'portfolio' ), {
+		    viewportFactor : 0.8
+		  });
+		},
+		init: function(){
+			this.wow();
+			this.template();
+			this.fullpane();
+			this.gridScrollFx();
+		}
+	}
+
 	main.header();
 
 	$(window).bind('load ready resize scroll', function(e){
@@ -79,7 +112,7 @@ $(document).ready(function(){
 
 	$('[data-nav-control]').bind('click', function(e){
 		menu.toggle(e);
-	});	
+	});
 
 	$('nav ul [href*="#"]').bind('click', function(e){
 		main.menuScrollTo(e);
@@ -90,6 +123,8 @@ $(document).ready(function(){
 		menu.blocked = false;
 		$('#hamburger').trigger('click');
 		return false;
-	}); 
+	});
+
+	initialize.init();
 
 });
