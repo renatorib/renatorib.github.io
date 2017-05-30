@@ -70,8 +70,8 @@ h1 span {
   width: 2px;
   height: 30px;
   background: red;
-  -webkit-transform: translate(0, 3px);
-          transform: translate(0, 3px);
+  -webkit-transform: translate(0, 5px);
+          transform: translate(0, 5px);
   -webkit-animation: blink 1s infinite;
           animation: blink 1s infinite;
 }
