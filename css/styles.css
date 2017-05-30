@@ -4,6 +4,7 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
   height: 100vh;
+  overflow-x: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
