@@ -1,7 +1,7 @@
 body {
   background: #000;
   color: #fff;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 16px;
   height: 100vh;
   overflow: hidden;
@@ -9,21 +9,44 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.pic-block,
+.info-block {
+  padding: 10px;
+}
+
+.profile-pic {
+  width: 120px;
+  border-radius: 999px;
+
+  box-shadow: 0 0 0 2px green;
+  border: 4px solid black;
 }
 
 h1 {
   font-weight: 300;
   margin: 0;
   padding: 0;
+  font-size: 0;
 }
 
 h1 span {
+  font-size: 32px;
+}
+
+h1 .typed {
+  padding-right: 1px;
+}
+
+h1 .autocomplete {
   color: #555;
+  padding-left: 1px;
 }
 
 .sub {
@@ -56,15 +79,15 @@ h1 span {
 }
 .links li a {
   text-decoration: none;
-  color: white;
+  color: #ddd;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
 }
 .links:hover li a {
-  color: grey;
+  color: #333;
 }
 .links li a:hover {
-  color: red;
+  color: #00ff00;
 }
 
 .cursor {
@@ -72,11 +95,11 @@ h1 span {
   position: absolute;
   width: 2px;
   height: 30px;
-  background: red;
+  background: green;
   -webkit-transform: translate(0, 6px);
-          transform: translate(0, 6px);
+  transform: translate(0, 6px);
   -webkit-animation: blink 1s infinite;
-          animation: blink 1s infinite;
+  animation: blink 1s infinite;
 }
 
 @-webkit-keyframes blink {
