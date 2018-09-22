@@ -1,0 +1,11 @@
+{
+  "name": "rena.to",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "http-server . -p 3000"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
