@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "http-server . -p 3000"
+    "dev": "next",
+    "build": "next build",
+    "export": "next export",
+    "deploy:copy": "copy {CNAME,README.md} out",
+    "deploy:gh-pages": "gh-pages -d out -b master",
+    "deploy": "yarn deploy:copy && yarn deploy:gh-pages"
+  },
+  "dependencies": {
+    "next": "^8.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "copy": "^0.3.2",
+    "gh-pages": "^2.0.1"
   }
 }
