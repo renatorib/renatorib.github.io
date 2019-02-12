@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "export": "next export",
-    "deploy:copy": "copy {CNAME,README.md} out",
-    "deploy:gh-pages": "gh-pages -d out -b master",
-    "deploy": "yarn deploy:copy && yarn deploy:gh-pages"
+    "build": "del .next && next build",
+    "export": "del out && next export",
+    "deploy": "gh-pages -d out -b master -t"
   },
   "dependencies": {
     "next": "^8.0.0",
@@ -16,7 +14,7 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "copy": "^0.3.2",
+    "del-cli": "^1.1.0",
     "gh-pages": "^2.0.1"
   }
 }
