@@ -3,15 +3,26 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "del .next && next build",
-    "export": "del out && next export",
+    "dev": "gatsby develop",
+    "start": "yarn dev",
+    "build": "gatsby build -d out",
     "deploy": "gh-pages -d out -b master -t"
   },
   "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@mdx-js/mdx": "^0.17.0",
+    "@mdx-js/tag": "^0.17.0",
+    "gatsby": "^2.0.119",
+    "gatsby-image": "^2.0.29",
+    "gatsby-mdx": "^0.3.6",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-source-filesystem": "^2.0.20",
+    "gatsby-transformer-sharp": "^2.1.13",
     "next": "^8.0.0",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "react-helmet": "^5.2.0"
   },
   "devDependencies": {
     "del-cli": "^1.1.0",
