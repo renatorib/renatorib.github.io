@@ -18,22 +18,14 @@ export default class extends Document {
           <style
             dangerouslySetInnerHTML={{
               __html: `
+                *, *:after, *:before {
+                  box-sizing: border-box;
+                }
+
                 body {
-                  background: #000;
-                  color: #fff;
-                  font-family: "Roboto Mono", monospace;
-                  font-size: 16px;
-                  height: 100vh;
-                  overflow: hidden;
-                  display: -webkit-box;
-                  display: -ms-flexbox;
-                  display: flex;
-                  -webkit-box-align: center;
-                  -ms-flex-align: center;
-                  align-items: center;
-                  -webkit-box-pack: center;
-                  -ms-flex-pack: center;
-                  justify-content: center;
+                  min-height: 100vh;
+                  padding: 0;
+                  margin: 0;
                 }
               `
             }}

@@ -2,53 +2,73 @@ import React from "react";
 
 export default () => (
   <div className="container">
-    <div className="center pic-block">
-      <img
-        className="profile-pic"
-        src="https://avatars0.githubusercontent.com/u/3277185"
-      />
-    </div>
-    <div className="center info-block">
-      <h1>
-        <span className="typed">Renato Rib</span>
-        <span className="cursor" />
-        <span className="autocomplete">eiro</span>
-      </h1>
+    <div>
+      <div className="center pic-block">
+        <img
+          className="profile-pic"
+          src="https://avatars0.githubusercontent.com/u/3277185"
+        />
+      </div>
+      <div className="center info-block">
+        <h1>
+          <span className="typed">Renato Rib</span>
+          <span className="cursor" />
+          <span className="autocomplete">eiro</span>
+        </h1>
 
-      <div className="sub">software engineer</div>
+        <div className="sub">software engineer</div>
 
-      <ul className="links">
-        <li className="github">
-          <a
-            href="http://github.com/renatorib"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-          </a>
-        </li>
-        <li className="twitter">
-          <a
-            href="http://twitter.com/renatorib_"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            twitter
-          </a>
-        </li>
-        <li className="linkedin">
-          <a
-            href="http://linkedin.com/in/renatorib"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-          </a>
-        </li>
-      </ul>
+        <ul className="links">
+          <li className="github">
+            <a
+              href="http://github.com/renatorib"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github
+            </a>
+          </li>
+          <li className="twitter">
+            <a
+              href="http://twitter.com/renatorib_"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              twitter
+            </a>
+          </li>
+          <li className="linkedin">
+            <a
+              href="http://linkedin.com/in/renatorib"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <style jsx>{`
+      .container {
+        background: #000;
+        color: #fff;
+        font-family: "Roboto Mono", monospace;
+        font-size: 16px;
+        height: 100vh;
+        overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+
       .pic-block,
       .info-block {
         padding: 10px;
