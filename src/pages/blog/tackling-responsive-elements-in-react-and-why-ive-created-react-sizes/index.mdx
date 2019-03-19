@@ -1,0 +1,212 @@
+import SEO from "~/components/SEO";
+
+<SEO
+  title="Tackling responsive elements in React and why I’ve created React Sizes."
+  image={require("./images/cover.jpg")}
+/>
+
+<div style={{ maxWidth: "100%" }}>
+  <img src={require("./images/cover.jpg")} style={{ maxWidth: "100%" }} />
+</div>
+
+# Tackling responsive elements in React and why I’ve created React Sizes.
+
+In the “perfect world of responsiveness” you can do 90% of things only by adding percentage widths, using flexbox, adding media queries to change grid dimensions, etc. But in the real world, sometimes we need to use two or more completely different structures to adapt to devices.
+
+As a Frontend Engineer I often have to use different elements based on the user’s viewport. By doing that over and over again I’ve found good and bad ways to make this swapping of elements.
+
+In fact we can still do this with media queries. You can simply render all elements for all devices and swap those with media queries. Just set `display: none;` in elements we want to hide on the target resolution. See example below:
+
+```jsx
+const MyComponent = () => (
+  <div>
+    <div className="hide-mobile">Desktop only</div>
+    <div className="hide-desktop">Mobile only</div>
+  </div>
+);
+```
+
+```css{2,7}
+.hide-mobile {
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+.hide-desktop {
+  @media not all and (max-width: 480px) {
+    display: none;
+  }
+}
+```
+
+It’s a good way and sometimes can work, **but**…
+
+## Why swapping elements with CSS might be a bad idea.
+
+Let’s assume you want to build a desktop and a mobile version of a website section, and to do it you need to pass different props to carousel component. Ex.: in mobile our carousel component should receive `showItems={1}` and in desktop, should receive `showItems={3}`
+
+You could (but shouldn’t) render the desktop and mobile version of the carousel component with different props and show/hide them with media queries. It’s an “expensive” way though. You’re rendering components in the DOM that won’t be used for that device/media query. Depending on the component it can affect the performance of your application in render time, size, etc.
+
+```jsx
+const MyComponent = ({ items }) => (
+  <div>
+    <div className="hide-mobile">
+      <SuperExpensiveCarousel showItems={3}>{items}</SuperExpensiveCarousel>
+    </div>
+
+    <div className="hide-desktop">
+      <SuperExpensiveCarousel showItems={1}>{items}</SuperExpensiveCarousel>
+    </div>
+  </div>
+);
+```
+
+## JavaScript to the rescue.
+
+To avoid rendering components that won’t be used you can use JS to decide which component should be rendered, avoiding the unnecessary render. This way you move the “responsive logic” to JS and get the other benefits JS has to offer, such as better support for calculations and keep the “should this component render” logic in the component declaration.
+
+In a nutshell, you have more control and flexibility. You have great powers.
+
+```jsx
+const MyComponent = ({ items }) => {
+  const isMobile = window.innerWidth < 480;
+  const showItems = isMobile ? 1 : 3;
+
+  return (
+    <SuperExpensiveCarousel showItems={showItems}>
+      {items}
+    </SuperExpensiveCarousel>
+  );
+};
+```
+
+You can easily have access to user’s width and height with `window.innerWidth` and `window.innerHeight`.
+Also you might want (and you will want) to know if the user resize the page to recalculate `window.innerWidth` again.
+Adding a resize listener to window may help you to deal with that:
+
+```jsx
+class MyComponent extends React.Component {
+  state = {
+    isMobile: false
+  };
+
+  handleWindowResize = () => {
+    this.setState({ isMobile: window.innerWidth < 480 });
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.onWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onWindowResize);
+  }
+
+  render() {
+    const { items } = this.props;
+    const { isMobile } = this.state;
+    const showItems = isMobile ? 1 : 3;
+
+    return (
+      <SuperExpensiveCarousel showItems={showItems}>
+        {items}
+      </SuperExpensiveCarousel>
+    );
+  }
+}
+```
+
+## Nice! But now the performance will haunt you.
+
+Remember, with great power comes great responsibility.
+
+Dealing with window resize callback can be dangerous, especially when you mess with props and/or state, that **updates** your component. If you don’t treat the callback, it could provoke **hundreds of unnecessary renders** by a simple resize movement, and this is the most common mistake when someone try to do something like this.
+
+<img src={require("./images/ops.gif")} />
+
+## Performance optimizations.
+
+If you want to prevent your component from exploding, you’ll need to treat the callback with debounce or throttle.
+
+> “**Debounce** and **throttle** are two similar (but different!) techniques to control how many times we allow a function to be executed over time.
+> Having a debounced or throttled version of our function is especially useful when we are attaching the function to a DOM event. Why? Because we are giving ourselves a layer of control between the event and the execution of the function […]”
+>
+> [Read more about debounce and throttle in this [great article](https://css-tricks.com/debouncing-throttling-explained-examples/) by css-tricks.]
+
+In the example below I’ve treated `throttledHandleWindowResize` with throttle of 200ms. Now the callback won’t be called more than 5 times in one second (max of one execution for every 200ms/0.2seg).
+
+```jsx
+import throttle from "lodash.throttle";
+
+class MyComponent extends React.Component {
+  state = {
+    isMobile: false
+  };
+
+  throttledHandleWindowResize = () => {
+    return throttle(() => {
+      this.setState({ isMobile: window.innerWidth < 480 });
+    }, 200);
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.throttledHandleWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.throttledHandleWindowResize);
+  }
+
+  render() {
+    const { items } = this.props;
+    const { isMobile } = this.state;
+    const showItems = isMobile ? 1 : 3;
+
+    return (
+      <SuperExpensiveCarousel showItems={showItems}>
+        {items}
+      </SuperExpensiveCarousel>
+    );
+  }
+}
+```
+
+## Introducing React Sizes
+
+Thinking in this approach, I’ve wrote [react-sizes](http://github.com/renatorib/react-sizes), a high-order component that handle all this work. You just need to pass the variables you want, based on the width and height of the window, and these variables will passed by props to your component:
+
+```jsx
+import React from 'react';
+import sizes from 'react-sizes';
+
+const MyComponent = ({ showItems, items }) => (
+  <SuperExpensiveCarousel showItems={showItems}>
+    {items}
+  </SuperExpensiveCarousel>
+);
+
+const mapSizesToProps = ({ width }) => ({
+  showItems: (width && width < 480) ? 1 : 3,
+});
+
+export sizes(mapSizesToProps)(MyComponent);
+```
+
+As you can see, you just need to create a `mapSizesToProps` function that receives a object with `width` and `height`.
+
+```jsx
+const mapSizesToProps = sizes => ({
+  width: sizes.width,
+  height: sizes.height
+});
+```
+
+To know more about the `mapSizesToProps`, you can read the [Guide](https://github.com/renatorib/react-sizes#guide). Also you can see more usage examples at [Usage](https://github.com/renatorib/react-sizes#usage) section.
+
+## Conclusion
+
+The best responsive solution is to always use media queries with a flexible layout, of course. But _sometimes_ the ideal world conflicts with real world and **you will** need to do something in javascript.
+
+Now, when this happens, you know: [React Sizes will be your friend.](https://github.com/renatorib/react-sizes)
+
+Don’t forget to follow me on [twitter](http://twitter.com/renatorib_) and [github](http://github.com/renatorib).

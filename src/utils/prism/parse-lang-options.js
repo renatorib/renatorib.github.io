@@ -19,7 +19,7 @@ export default language => {
         highlightLines = rangeParser.parse(option).filter(n => n > 0);
       } else {
         option = option.split(":");
-        props[option[0]] = option[1];
+        props[option[0]] = option[1] !== undefined ? option[1] : true;
       }
     });
   }

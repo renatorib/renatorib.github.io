@@ -3,9 +3,11 @@ const { join } = require("path");
 const { promisify } = require("util");
 
 const withPlugins = require("next-compose-plugins");
+const withImages = require("next-images");
 const nextMDX = require("@zeit/next-mdx");
 
 const plugins = [
+  withImages,
   nextMDX({
     extension: /\.(md|mdx)$/
   })
