@@ -1,3 +1,5 @@
+import preval from "babel-plugin-preval/macro";
+
 const postFileNames =
   preval`
 module.exports = require("fs").readdirSync("./src/pages/blog")

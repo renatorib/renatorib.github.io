@@ -1,10 +1,9 @@
 import React from "react";
 
-import posts from "../blog-posts";
+// import posts from "../blog-posts";
 
 export default () => (
   <div className="container">
-    {console.log({ posts })}
     <div>
       <div className="center pic-block">
         <img

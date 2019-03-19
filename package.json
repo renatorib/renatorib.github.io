@@ -6,7 +6,8 @@
     "dev": "next",
     "build": "del .next && next build",
     "export": "del out && next export",
-    "deploy": "gh-pages -d out -b master -t"
+    "deploy": "gh-pages -d out -b master -t",
+    "lint": "eslint src"
   },
   "dependencies": {
     "@mdx-js/loader": "^0.20.3",
@@ -23,9 +24,14 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-preval": "^3.0.1",
     "del-cli": "^1.1.0",
-    "gh-pages": "^2.0.1"
+    "eslint": "^5.15.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.16.4"
   }
 }

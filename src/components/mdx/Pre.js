@@ -4,8 +4,6 @@ import createElement from "react-syntax-highlighter/dist/create-element";
 
 import parseLangOptions from "~/utils/prism/parse-lang-options";
 
-const LineRenderer = ({ children, tagName }) => children.map();
-
 const Code = ({ children, className = "" }) => {
   const parsed = parseLangOptions(className.replace("language-", ""));
 
