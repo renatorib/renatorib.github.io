@@ -1,13 +1,12 @@
-import SEO from "~/components/SEO";
+import Layout from "~/layouts/Post";
 
-<SEO
-  title="Tackling responsive elements in React and why I’ve created React Sizes."
-  image={require("./images/cover.jpg")}
-/>
+export default Layout;
 
-<div style={{ maxWidth: "100%" }}>
-  <img src={require("./images/cover.jpg")} style={{ maxWidth: "100%" }} />
-</div>
+export const meta = {
+  title:
+    "Tackling responsive elements in React and why I’ve created React Sizes.",
+  image: require("./images/cover.jpg")
+};
 
 # Tackling responsive elements in React and why I’ve created React Sizes.
 

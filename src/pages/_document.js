@@ -15,6 +15,10 @@ export default class extends Document {
     return (
       <html>
         <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Serif:400,400i,700"
+            rel="stylesheet"
+          />
           <style
             dangerouslySetInnerHTML={{
               __html: `
@@ -26,6 +30,12 @@ export default class extends Document {
                   min-height: 100vh;
                   padding: 0;
                   margin: 0;
+                  font-family: "PT Sans", sans-serif;
+                }
+
+                h1, h2, h3, h4, h5, h6 {
+                  font-family: "PT Serif", serif;
+                  font-weight: 100;
                 }
               `
             }}

@@ -11,9 +11,11 @@
     }
   },
   "plugins": [
+    "babel-plugin-preval",
     [
-      "module-resolver",
+      "babel-plugin-module-resolver",
       {
+        "extensions": [".mdx"],
         "alias": {
           "~": "./src"
         }
