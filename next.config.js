@@ -2,11 +2,11 @@ const fsp = require("fs.promises");
 const { join } = require("path");
 
 const withPlugins = require("next-compose-plugins");
-const withImages = require("next-images");
+const withOptimizedImages = require("next-optimized-images");
 const nextMDX = require("@zeit/next-mdx");
 
 const plugins = [
-  withImages,
+  withOptimizedImages,
   nextMDX({
     extension: /\.(md|mdx)$/
   })
