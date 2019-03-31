@@ -1,15 +1,12 @@
-import React from "react";
+import styled from "styled-components";
+import { theme } from "styled-tools";
 
-const Paragraph = ({ children }) => (
-  <>
-    <code>{children}</code>
+const Code = styled.code`
+  font-size: 0.8em;
+  padding: 5px 8px;
+  border-radius: 2px;
+  background: #010101;
+  font-family: ${theme("codeFontFamily")};
+`;
 
-    <style jsx>{`
-      code {
-        font-size: 0.8em;
-      }
-    `}</style>
-  </>
-);
-
-export default Paragraph;
+export default Code;

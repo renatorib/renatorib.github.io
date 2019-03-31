@@ -8,8 +8,6 @@ export const meta = {
   image: require("./images/cover.jpg")
 };
 
-# Tackling responsive elements in React and why I’ve created React Sizes.
-
 In the “perfect world of responsiveness” you can do 90% of things only by adding percentage widths, using flexbox, adding media queries to change grid dimensions, etc. But in the real world, sometimes we need to use two or more completely different structures to adapt to devices.
 
 As a Frontend Engineer I often have to use different elements based on the user’s viewport. By doing that over and over again I’ve found good and bad ways to make this swapping of elements.
@@ -130,7 +128,7 @@ If you want to prevent your component from exploding, you’ll need to treat the
 > “**Debounce** and **throttle** are two similar (but different!) techniques to control how many times we allow a function to be executed over time.
 > Having a debounced or throttled version of our function is especially useful when we are attaching the function to a DOM event. Why? Because we are giving ourselves a layer of control between the event and the execution of the function […]”
 >
-> [Read more about debounce and throttle in this [great article](https://css-tricks.com/debouncing-throttling-explained-examples/) by css-tricks.]
+> > Read more about debounce and throttle in this [great article](https://css-tricks.com/debouncing-throttling-explained-examples/) by css-tricks.
 
 In the example below I’ve treated `throttledHandleWindowResize` with throttle of 200ms. Now the callback won’t be called more than 5 times in one second (max of one execution for every 200ms/0.2seg).
 

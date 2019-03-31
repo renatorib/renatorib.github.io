@@ -1,69 +1,58 @@
 import React from "react";
+import styled from "styled-components";
+import { theme } from "styled-tools";
+import slugify from "@sindresorhus/slugify";
 
-export const Heading1 = ({ children }) => (
-  <>
-    <h1>{children}</h1>
+export const Heading1 = styled.h1`
+  font-size: 60px;
+  font-weight: 100;
+  color: ${theme("titleColor")};
+  font-family: ${theme("titleFontFamily")};
+`;
 
-    <style jsx>{`
-      h1 {
-        font-size: 50px;
-        font-weight: 100;
-      }
-    `}</style>
-  </>
+const HeadingAnchor = styled.a`
+  position: absolute;
+  left: -26px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.05);
+  transition: color 300ms ease;
+  user-select: none;
+`;
+
+const HeadingGeneric = styled.h2`
+  position: relative;
+  font-weight: 100;
+  color: ${theme("titleColor")};
+  font-family: ${theme("titleFontFamily")};
+
+  &:hover ${HeadingAnchor} {
+    color: lime;
+  }
+`;
+
+const HeadingWithAnchor = ({ h = "h2", children, ...props }) => (
+  <HeadingGeneric {...props} as={h} id={slugify(children)}>
+    <HeadingAnchor href={`#${slugify(children)}`}>#</HeadingAnchor>
+    {children}
+  </HeadingGeneric>
 );
 
-const HeadingWithAnchor = ({ tag: Tag, size, children }) => {
-  const anchor = children
-    .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/\./g, "");
+export const Heading2 = styled(HeadingWithAnchor).attrs({ h: "h2" })`
+  font-size: 36px;
+`;
 
-  return (
-    <>
-      <Tag className="heading" id={anchor}>
-        <a className="anchor" href={`#${anchor}`}>
-          #
-        </a>
-        {children}
-      </Tag>
+export const Heading3 = styled(HeadingWithAnchor).attrs({ h: "h3" })`
+  font-size: 30px;
+`;
 
-      <style jsx>{`
-        .heading {
-          position: relative;
-          font-size: ${size};
-          font-weight: 100;
-          font-style: italic;
-        }
+export const Heading4 = styled(HeadingWithAnchor).attrs({ h: "h4" })`
+  font-size: 26px;
+`;
 
-        .anchor {
-          position: absolute;
-          left: -26px;
-          text-decoration: none;
-          color: rgba(0, 0, 0, 0.05);
-          transition: color 300ms ease;
-        }
+export const Heading5 = styled(HeadingWithAnchor).attrs({ h: "h5" })`
+  font-size: 21px;
+`;
 
-        .heading:hover .anchor {
-          color: rgba(0, 0, 0, 0.3);
-        }
-      `}</style>
-    </>
-  );
-};
-
-export const Heading2 = props => (
-  <HeadingWithAnchor tag="h2" size="34px" {...props} />
-);
-export const Heading3 = props => (
-  <HeadingWithAnchor tag="h3" size="30px" {...props} />
-);
-export const Heading4 = props => (
-  <HeadingWithAnchor tag="h4" size="26px" {...props} />
-);
-export const Heading5 = props => (
-  <HeadingWithAnchor tag="h5" size="21px" {...props} />
-);
-export const Heading6 = props => (
-  <HeadingWithAnchor tag="h6" size="18px" {...props} />
-);
+export const Heading6 = styled(HeadingWithAnchor).attrs({ h: "h6" })`
+  font-size: 18px;
+`;

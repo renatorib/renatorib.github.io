@@ -1,13 +1,13 @@
 const rangeParser = require("parse-numeric-range");
 
 export default language => {
-  if (!language) {
-    return "";
-  }
-
   let lang = language;
   let props = {};
   let highlightLines = [];
+
+  if (!lang) {
+    return { lang: "none", props, highlightLines };
+  }
 
   if (language.split("{").length > 1) {
     let [_lang, ...options] = language.split("{");
