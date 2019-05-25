@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    color: ${theme("textColor")};
+    background: ${theme("bgColor")};
     min-height: 100vh;
     padding: 0;
     margin: 0;

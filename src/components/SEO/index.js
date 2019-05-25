@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import favicon from "./favicon.png";
 
 const SEO = ({ title, description, image }) => (
   <Head>
@@ -18,6 +19,8 @@ const SEO = ({ title, description, image }) => (
     {title && <meta name="twitter:title" content={title} />}
     {description && <meta name="twitter:description" content={description} />}
     {image && <meta name="twitter:image" content={image} />}
+
+    <link rel="shortcut icon" type="image/png" href={favicon} />
   </Head>
 );
 

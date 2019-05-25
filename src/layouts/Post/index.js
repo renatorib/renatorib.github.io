@@ -1,11 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { prop, ifProp } from "styled-tools";
+import { theme, prop, ifProp } from "styled-tools";
 import { MDXTag } from "@mdx-js/tag";
 import SEO from "~/components/SEO";
 
 const PostWrapper = styled.div`
-  background: #000;
+  background: ${theme("bgColor")};
   color: white;
 `;
 
@@ -41,8 +41,8 @@ const PostCover = styled.div`
     right: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 1) 100%
+      rgba(255, 255, 255, 0.5) 0%,
+      ${theme("bgColor")} 100%
     );
   }
 

@@ -1,9 +1,22 @@
 import React from "react";
+import styled from "styled-components";
+import SEO from "../../components/SEO";
+//import { theme } from "styled-tools";
 
-// import posts from "../blog-posts";
+const Container = styled.div`
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default () => (
-  <div className="container">
+  <Container>
+    <SEO title="@renatorib" description="Renato Ribeiro; Software Engineer." />
+
     <div>
       <div className="center pic-block">
         <img
@@ -53,24 +66,6 @@ export default () => (
     </div>
 
     <style jsx>{`
-      .container {
-        background: #000;
-        color: #fff;
-        font-family: "Roboto Mono", monospace;
-        font-size: 16px;
-        height: 100vh;
-        overflow: hidden;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-      }
-
       .pic-block,
       .info-block {
         padding: 10px;
@@ -183,5 +178,5 @@ export default () => (
         }
       }
     `}</style>
-  </div>
+  </Container>
 );

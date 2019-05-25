@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/tag";
 import { ThemeProvider } from "styled-components";
 
 import * as components from "~/components/mdx";
-import dark from "~/style/themes/dark";
+import theme from "~/style/themes/light";
 import GlobalStyle from "~/style/components/GlobalStyle";
 
 export default class CustomApp extends App {
@@ -13,7 +13,7 @@ export default class CustomApp extends App {
 
     return (
       <Container>
-        <ThemeProvider theme={dark}>
+        <ThemeProvider theme={theme}>
           <MDXProvider components={{ ...components }}>
             <>
               <GlobalStyle />

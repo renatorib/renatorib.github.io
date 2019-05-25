@@ -1,4 +1,4 @@
-import defaultTheme from "react-syntax-highlighter/dist/styles/prism/atom-dark";
+import defaultTheme from "react-syntax-highlighter/dist/styles/prism/prism";
 import { themeExtend } from "../utils/prism";
 
 const extend = themeExtend(defaultTheme);
@@ -8,28 +8,37 @@ const theme = {
   textFontFamily: "PT Serif, serif",
   codeFontFamily: "Fira Code, Consolata, monospace",
 
-  bgColor: "#000000",
-  bgBlockColor: "#030303",
-  titleColor: "#FFFFFF",
-  textColor: "#AAAAAA",
-  opaqueTextColor: "#777777",
+  bgColor: "#F8F8F8",
+  bgBlockColor: "#EFEFEF",
+  titleColor: "#222",
+  textColor: "#666",
+  opaqueTextColor: "#888",
 
   highlightColor: "lime",
 
   prism: {
     ...defaultTheme,
+    ...extend(
+      [
+        "operator",
+        "entity",
+        "url",
+        ".language-css .token.string",
+        ".style .token.string"
+      ],
+      {
+        background: "none"
+      }
+    ),
     ...extend('pre[class*="language-"]', {
       textShadow: "none",
-      background: "#020202",
+      background: "#EFEFEF",
       borderRadius: "4px",
       fontFamily: "Fira Code, Consolata, monospace"
     }),
     ...extend('code[class*="language-"]', {
       fontFamily: "Fira Code, Consolata, monospace",
       textShadow: "none"
-    }),
-    ...extend("class-name", {
-      textDecoration: "none"
     })
   }
 };
