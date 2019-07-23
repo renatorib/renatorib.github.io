@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { theme, prop, ifProp } from "styled-tools";
-import { MDXTag } from "@mdx-js/tag";
 import SEO from "~/components/SEO";
+import { Heading1 } from "~/components/mdx/Heading";
 
 const PostWrapper = styled.div`
   background: ${theme("bgColor")};
@@ -65,14 +65,14 @@ const authors = {
   }
 };
 
-const Post = ({ children, meta }) => (
+const Post = ({ children, meta = {} }) => (
   <>
     <SEO {...meta} />
     <PostWrapper>
       <PostCover src={meta.image} color={meta.color}>
         <PostContainer>
           <PostTitleWrapper>
-            <MDXTag name="h1">{meta.title}</MDXTag>
+            <Heading1>{meta.title}</Heading1>
           </PostTitleWrapper>
           {authors[meta.author] && (
             <PostAuthorWrapper>

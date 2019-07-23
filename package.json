@@ -7,15 +7,15 @@
     "build": "del .next && next build",
     "export": "del out && next export",
     "deploy": "gh-pages -d out -b master -t",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "full-deploy": "yarn lint && yarn build && yarn export && yarn deploy"
   },
   "dependencies": {
     "@mdx-js/loader": "^0.20.3",
     "@mdx-js/tag": "^0.20.3",
     "@sindresorhus/slugify": "^0.9.0",
     "@zeit/next-mdx": "^1.2.0",
-    "fs.promises": "^0.1.2",
-    "next": "^8.0.0",
+    "next": "^9.0.2",
     "next-compose-plugins": "^2.1.1",
     "parse-numeric-range": "^0.0.2",
     "react": "^16.8.0",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "babel-plugin-macros": "^2.6.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-preval": "^3.0.1",
     "del-cli": "^1.1.0",
@@ -38,6 +39,9 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^6.0.0",
     "next-optimized-images": "^2.4.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "remark": "^11.0.0",
+    "remark-mdx": "^1.1.0",
+    "to-vfile": "^6.0.0"
   }
 }

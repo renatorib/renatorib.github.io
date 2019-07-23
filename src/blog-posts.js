@@ -1,21 +1,28 @@
 import preval from "babel-plugin-preval/macro";
 
-const postFileNames =
-  preval`
-module.exports = require("fs").readdirSync("./src/pages/blog")
-` || [];
+const rawPosts =
+  preval`module.exports = require('../scripts/get-posts.js').getPosts()` || [];
 
-const posts = postFileNames.map(name => {
-  const {
-    default: Component,
-    meta
-  } = require(`./pages/blog/${name}/index.mdx`);
+const posts = rawPosts
+  .map(({ slug, ...meta }) => {
+    try {
+      const mdx = require(`../posts/${slug}/index.mdx`);
 
-  return {
-    route: `/blog/${name}`,
-    Component,
-    meta
-  };
-});
+      return {
+        slug,
+        mdx: {
+          ...mdx,
+          meta: {
+            ...meta, // default meta extracted from mdx ast
+            ...mdx.meta // can be override by explicit meta from mdx file
+          }
+        }
+      };
+    } catch (e) {
+      console.error(e); // eslint-disable-line
+      return null;
+    }
+  })
+  .filter(Boolean);
 
 export default posts;

@@ -1,4 +1,4 @@
-const fsp = require("fs.promises");
+const fs = require("fs");
 const { join } = require("path");
 
 const withPlugins = require("next-compose-plugins");
@@ -20,15 +20,24 @@ const config = {
 
     if (!dev) {
       // copy static root files
-      await Promise.all(
-        STATIC_ROOT_FILES.map(file =>
-          fsp.copyFile(join(dir, file), join(outDir, file))
-        )
+      STATIC_ROOT_FILES.forEach(file =>
+        fs.copyFileSync(join(dir, file), join(outDir, file))
       );
     }
 
+    delete defaultPathMap["/blog/[slug]"];
+
+    const postsPathMap = fs.readdirSync("./posts").reduce(
+      (acc, slug) => ({
+        ...acc,
+        [`/blog/${slug}`]: { page: "/blog/[slug]" }
+      }),
+      {}
+    );
+
     return {
       ...defaultPathMap,
+      ...postsPathMap,
       "/404.html": { page: "/_error" }
     };
   }
