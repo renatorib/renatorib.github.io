@@ -16,12 +16,18 @@ const config = {
   pageExtensions: ["js", "jsx", "mdx"],
 
   exportPathMap: async function(defaultPathMap, { dev, dir, outDir }) {
-    const STATIC_ROOT_FILES = ["CNAME", "README.md", ".nojekyll"];
+    const STATIC_ROOT_FILES = ["CNAME", ".nojekyll"];
 
     if (!dev) {
       // copy static root files
       STATIC_ROOT_FILES.forEach(file =>
         fs.copyFileSync(join(dir, file), join(outDir, file))
+      );
+
+      fs.writeFileSync(
+        join(outDir, "README.md"),
+        "The `master` branch contains build source for gh-pages." +
+          "If you're looking for source code, switch to `src` branch"
       );
     }
 
@@ -30,7 +36,7 @@ const config = {
     const postsPathMap = fs.readdirSync("./posts").reduce(
       (acc, slug) => ({
         ...acc,
-        [`/blog/${slug}`]: { page: "/blog/[slug]" }
+        [`/blog/${slug}`]: { page: "/blog/[slug]", query: { slug } }
       }),
       {}
     );
