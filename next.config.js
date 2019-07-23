@@ -4,6 +4,7 @@ const { join } = require("path");
 const withPlugins = require("next-compose-plugins");
 const withOptimizedImages = require("next-optimized-images");
 const nextMDX = require("@zeit/next-mdx");
+const { getPosts } = require("./scripts/get-posts");
 
 const plugins = [
   withOptimizedImages,
@@ -33,10 +34,10 @@ const config = {
 
     delete defaultPathMap["/blog/[slug]"];
 
-    const postsPathMap = fs.readdirSync("./posts").reduce(
-      (acc, slug) => ({
+    const postsPathMap = getPosts().reduce(
+      (acc, post) => ({
         ...acc,
-        [`/blog/${slug}`]: { page: "/blog/[slug]", query: { slug } }
+        [`/blog/${post.slug}`]: { page: "/blog/[slug]" }
       }),
       {}
     );
