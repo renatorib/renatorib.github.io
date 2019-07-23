@@ -1,6 +1,6 @@
 workflow "Deploy Workflow" {
   on = "push"
-  resolves = ["nuxt/actions-yarn@master"]
+  resolves = ["Deploy"]
 }
 
 action "Install" {
@@ -26,8 +26,13 @@ action "Export" {
   args = "export"
 }
 
-action "nuxt/actions-yarn@master" {
-  uses = "nuxt/actions-yarn@master"
+action "Deploy" {
+  uses = "peaceiris/actions-gh-pages@v1.0.1"
   needs = ["Export"]
   args = "deploy"
+  env = {
+    PUBLISH_DIR = "./out"
+    PUBLISH_BRANCH = "master"
+  }
+  secrets = ["ACTIONS_DEPLOY_KEY"]
 }
