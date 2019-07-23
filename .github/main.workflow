@@ -1,9 +1,9 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["nuxt/actions-yarn@master"]
+  resolves = ["Deploy"]
 }
 
-action "nuxt/actions-yarn@master" {
+action "Deploy" {
   uses = "nuxt/actions-yarn@master"
   args = "full-deploy"
 }
