@@ -1,9 +1,33 @@
-workflow "New workflow" {
+workflow "Deploy Workflow" {
   on = "push"
-  resolves = ["Deploy"]
+  resolves = ["nuxt/actions-yarn@master"]
 }
 
-action "Deploy" {
+action "Install" {
   uses = "nuxt/actions-yarn@master"
-  args = "full-deploy"
+  args = "install"
+}
+
+action "Lint" {
+  uses = "nuxt/actions-yarn@master"
+  needs = ["Install"]
+  args = "lint"
+}
+
+action "Build" {
+  uses = "nuxt/actions-yarn@master"
+  needs = ["Lint"]
+  args = "build"
+}
+
+action "Export" {
+  uses = "nuxt/actions-yarn@master"
+  needs = ["Build"]
+  args = "export"
+}
+
+action "nuxt/actions-yarn@master" {
+  uses = "nuxt/actions-yarn@master"
+  needs = ["Export"]
+  args = "deploy"
 }
