@@ -16,6 +16,11 @@ const theme = {
 
   highlightColor: "lime",
 
+  palette: {
+    color: ["#000000", "#222222", "#444444"],
+    background: ["#FFFFFF", "#F8F8F8", "#EFEFEF"]
+  },
+
   prism: {
     ...defaultTheme,
     ...extend(

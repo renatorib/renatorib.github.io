@@ -6,10 +6,10 @@ import Paragraph from "./Paragraph";
 const BaseBlockquote = styled.blockquote`
   margin: 20px 0;
   padding: 10px 20px;
-  border-left: 7px solid rgba(255, 255, 255, 0.06);
-  background: #020202;
+  border-left: 7px solid rgba(0, 0, 0, 0.06);
+  background: ${theme("bgBlockColor")};
   font-style: italic;
-  font-family: "PT Serif", serif;
+  font-family: ${theme("textFontFamily")}
   color: ${theme("opaqueTextColor")};
   border-radius: 0 5px 5px 0;
 

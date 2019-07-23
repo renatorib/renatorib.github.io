@@ -4,9 +4,9 @@ const rawPosts =
   preval`module.exports = require('../scripts/get-posts.js').getPosts()` || [];
 
 const posts = rawPosts
-  .map(({ slug, ...meta }) => {
+  .map(({ slug, dir, ...meta }) => {
     try {
-      const mdx = require(`../posts/${slug}/index.mdx`);
+      const mdx = require(`../posts/${dir}/index.mdx`);
 
       return {
         slug,

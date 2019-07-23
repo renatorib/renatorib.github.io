@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "styled-tools";
+import { palette, theme } from "styled-tools";
 
 const Link = styled.a`
   text-decoration: none;
@@ -7,7 +7,7 @@ const Link = styled.a`
 
   &,
   &:visited {
-    color: white;
+    color: ${palette("color", 0)};
   }
 
   &:hover {

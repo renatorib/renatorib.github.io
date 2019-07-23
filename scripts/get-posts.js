@@ -13,32 +13,43 @@ const getTitle = tree => {
     : null;
 };
 
-const extract = path => {
-  const file = readSync(path);
-  const tree = remark()
-    .use(mdx)
-    .parse(file);
+const extract = dir => {
+  try {
+    const file = readSync("./posts/" + dir + "/index.mdx");
 
-  const meta = {
-    title: getTitle(tree)
-  };
+    const tree = remark()
+      .use(mdx)
+      .parse(file);
 
-  return meta;
+    const [, date, slug] = dir.match(/(\d{4}-\d{2}-\d{2})-(.+)/) || [];
+
+    if (!date || !slug) {
+      throw new Error(
+        `Post folder bad formatted for ${dir}, please use this format: 'YYYY-MM-DD-my-postslug'`
+      );
+    }
+
+    const meta = {
+      title: getTitle(tree),
+      date: new Date(date + " GMT-0300").toUTCString(),
+      slug,
+      dir
+    };
+
+    return meta;
+  } catch (e) {
+    console.error(e); // eslint-disable-line
+    return null;
+  }
 };
 
-const getSlugs = () => fs.readdirSync("./posts");
+const getDirs = () => fs.readdirSync("./posts");
 
 const getPosts = () =>
-  getSlugs().map(slug => {
-    const meta = extract("./posts/" + slug + "/index.mdx", "utf8");
-
-    return {
-      slug,
-      ...meta
-    };
-  });
+  getDirs()
+    .map(extract)
+    .filter(Boolean);
 
 module.exports = {
-  getSlugs,
   getPosts
 };

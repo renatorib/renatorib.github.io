@@ -2,10 +2,11 @@ import Head from "next/head";
 import React from "react";
 import favicon from "./favicon.png";
 
-const SEO = ({ title, description, image }) => (
+const SEO = ({ title, description, image, date }) => (
   <Head>
     {/* Common Tags */}
     {title && <title>{title}</title>}
+    {date && <meta name="date" content={date} />}
 
     {/* Open Graph */}
     {title && <meta property="og:title" content={title} />}

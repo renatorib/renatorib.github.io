@@ -8,6 +8,10 @@ export const Heading1 = styled.h1`
   font-weight: 100;
   color: ${theme("titleColor")};
   font-family: ${theme("titleFontFamily")};
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const HeadingAnchor = styled.a`

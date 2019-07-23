@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     color: ${theme("textColor")};
     background: ${theme("bgColor")};
+    font-family: ${theme("textFontFamily")};
     min-height: 100vh;
     padding: 0;
     margin: 0;

@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import SEO from "../../components/SEO";
-//import { theme } from "styled-tools";
 
 const Container = styled.div`
   font-family: "Roboto Mono", monospace;
@@ -16,8 +14,6 @@ const Container = styled.div`
 
 export default () => (
   <Container>
-    <SEO title="@renatorib" description="Renato Ribeiro; Software Engineer." />
-
     <div>
       <div className="center pic-block">
         <img

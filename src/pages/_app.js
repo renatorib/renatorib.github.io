@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import theme from "~/style/themes/light";
 import GlobalStyle from "~/style/components/GlobalStyle";
+import SEO from "~/components/SEO";
 
 export default class CustomApp extends App {
   render() {
@@ -13,6 +14,10 @@ export default class CustomApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <>
+            <SEO
+              title="@renatorib"
+              description="Renato Ribeiro; Software Engineer."
+            />
             <GlobalStyle />
             <Component {...pageProps} />
           </>
