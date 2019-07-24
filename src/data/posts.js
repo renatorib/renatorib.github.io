@@ -1,12 +1,14 @@
 import preval from "babel-plugin-preval/macro";
+import authors from "./authors";
 
 const rawPosts =
-  preval`module.exports = require('../scripts/get-posts.js').getPosts()` || [];
+  preval`module.exports = require('../../scripts/get-posts.js').getPosts()` ||
+  [];
 
 const posts = rawPosts
   .map(({ slug, dir, ...meta }) => {
     try {
-      const mdx = require(`../posts/${dir}/index.mdx`);
+      const mdx = require(`../../posts/${dir}/index.mdx`);
 
       return {
         slug,
@@ -14,7 +16,8 @@ const posts = rawPosts
           ...mdx,
           meta: {
             ...meta, // default meta extracted from mdx ast
-            ...mdx.meta // can be override by explicit meta from mdx file
+            ...mdx.meta, // can be override by explicit meta from mdx file
+            author: authors[mdx.meta.authors] || authors.renatorib
           }
         }
       };

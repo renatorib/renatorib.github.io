@@ -37,13 +37,13 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PostAuthor = ({ avatar, name, twitter, date }) => (
-  <Wrapper>
-    <Avatar src={avatar} />
+const PostAuthor = ({ avatar, name, profiles, date, ...props }) => (
+  <Wrapper {...props}>
+    {avatar && <Avatar src={avatar} />}
     <Content>
       <div>
         <StyledLink
-          href={`https://twitter.com/${twitter}`}
+          href={profiles[0].url}
           rel="noopener noreferrer"
           target="_blank"
         >

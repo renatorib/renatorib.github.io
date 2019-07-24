@@ -37,7 +37,10 @@ const config = {
     const postsPathMap = getPosts().reduce(
       (acc, post) => ({
         ...acc,
-        [`/blog/${post.slug}`]: { page: "/blog/[slug]" }
+        [`/blog/${post.slug}`]: {
+          page: "/blog/[slug]",
+          query: { slug: post.slug }
+        }
       }),
       {}
     );

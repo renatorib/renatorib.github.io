@@ -38,9 +38,7 @@ const Code = ({ children, className = "" }) => {
                   <div
                     style={{
                       opacity: 1,
-                      background: !focus
-                        ? "rgba(255, 255, 255, 0.03)"
-                        : "transparent"
+                      background: !focus ? "rgba(0, 0, 0, 0.03)" : "transparent"
                     }}
                     key={`code-segment${i}`}
                   >
@@ -52,7 +50,7 @@ const Code = ({ children, className = "" }) => {
               if (highlightLines.length > 0) {
                 return (
                   <div
-                    style={{ opacity: focus ? 0.3 : 0.8 }}
+                    style={{ opacity: focus ? 0.2 : 0.5 }}
                     key={`code-segment${i}`}
                   >
                     {line({ useInlineStyles: !focus })}

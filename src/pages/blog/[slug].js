@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { MDXProvider } from "@mdx-js/tag";
 import PostLayout from "~/layouts/Post";
-import blogPosts from "~/blog-posts";
+import posts from "~/data/posts";
 import * as mdxComponents from "~/components/mdx";
 
 const findComponentFromSlug = slug => {
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = posts.find(p => p.slug === slug);
+  console.log(slug);
 
   if (!post) {
     return {};
@@ -31,7 +32,7 @@ class Post extends Component {
     );
 
     if (!MDXComponent) {
-      return <div>Not found</div>;
+      return <div>Post not found</div>;
     }
 
     return (

@@ -1,25 +1,16 @@
 const fs = require("fs");
-const { readSync } = require("to-vfile");
-const remark = require("remark");
-const mdx = require("remark-mdx");
+const mdxToHast = require("./mdx-to-hast");
 
 const getTitle = tree => {
-  const titleNode = tree.children.find(
-    ({ type, depth }) => type === "heading" && depth === 1
-  );
+  const h1 = tree.children.find(n => n.tagName === "h1");
+  const text = h1 && h1.children.find(n => n.type === "text");
 
-  return titleNode
-    ? titleNode.children.find(({ type }) => type === "text").value
-    : null;
+  return text ? text.value : null;
 };
 
 const extract = dir => {
   try {
-    const file = readSync("./posts/" + dir + "/index.mdx");
-
-    const tree = remark()
-      .use(mdx)
-      .parse(file);
+    const tree = mdxToHast(fs.readFileSync("./posts/" + dir + "/index.mdx"));
 
     const [, date, slug] = dir.match(/(\d{4}-\d{2}-\d{2})-(.+)/) || [];
 
@@ -43,13 +34,13 @@ const extract = dir => {
   }
 };
 
-const getDirs = () => fs.readdirSync("./posts");
-
 const getPosts = () =>
-  getDirs()
+  fs
+    .readdirSync("./posts")
     .map(extract)
     .filter(Boolean);
 
 module.exports = {
-  getPosts
+  getPosts,
+  extract
 };

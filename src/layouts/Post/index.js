@@ -6,7 +6,7 @@ import UILink from "~/components/mdx/Link";
 import { Heading1 } from "~/components/mdx/Heading";
 import SEO from "~/components/SEO";
 
-import PostAuthor from "./components/PostAuthor";
+import PostAuthor from "~/components/molecules/PostAuthor";
 
 const PostWrapper = styled.div`
   background: ${theme("bgColor")};
@@ -83,14 +83,6 @@ const NegativeLink = styled(UILink)`
   }
 `;
 
-const authors = {
-  renatorib: {
-    name: "Renato Ribeiro",
-    avatar: "https://avatars2.githubusercontent.com/u/3277185?s=200",
-    twitter: "@renatorib_"
-  }
-};
-
 const Post = ({ children, meta = {} }) => (
   <>
     <SEO {...meta} />
@@ -106,9 +98,9 @@ const Post = ({ children, meta = {} }) => (
 
         <PostContainer>
           <PostTitle>{meta.title}</PostTitle>
-          {authors[meta.author] && (
+          {meta.author && (
             <PostAuthorWrapper>
-              <PostAuthor {...authors[meta.author]} date={meta.date} />
+              <PostAuthor {...meta.author} date={meta.date} />
             </PostAuthorWrapper>
           )}
         </PostContainer>
