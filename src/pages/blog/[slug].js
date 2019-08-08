@@ -6,7 +6,6 @@ import * as mdxComponents from "~/components/mdx";
 
 const findComponentFromSlug = slug => {
   const post = posts.find(p => p.slug === slug);
-  console.log(slug);
 
   if (!post) {
     return {};
