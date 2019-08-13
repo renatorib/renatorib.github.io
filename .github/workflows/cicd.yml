@@ -1,10 +1,9 @@
 name: Deploy Workflow
 
-on: push
-
-push:
-  branches:
-    - src
+on:
+  push:
+    branches:
+      - src
 
 jobs:
   debug:
