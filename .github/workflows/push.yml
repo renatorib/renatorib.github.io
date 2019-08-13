@@ -1,5 +1,6 @@
-on: push
 name: Deploy Workflow
+on: [push, pull_request]
+
 jobs:
   install:
     name: CI
@@ -15,8 +16,10 @@ jobs:
       - name: Build
         run: npx yarn build
       - name: Export
+        if: github.event == 'push' && github.branch == 'src'
         run: npx yarn export
       - name: Deploy
+        if: github.event == 'push' && github.branch == 'src'
         uses: peaceiris/actions-gh-pages@v1.0.1
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
