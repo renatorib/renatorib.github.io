@@ -89,6 +89,7 @@ export default () => (
 
       h1 .typed {
         padding-right: 1px;
+        color: white;
       }
 
       h1 .autocomplete {
@@ -127,7 +128,6 @@ export default () => (
         display: inline-block;
         text-decoration: none;
         color: #ddd;
-        -webkit-transition: all 300ms ease;
         transition: all 300ms ease;
         padding: 30px 10px;
       }
@@ -145,22 +145,8 @@ export default () => (
         width: 2px;
         height: 30px;
         background: green;
-        -webkit-transform: translate(0, 6px);
-        transform: translate(0, 6px);
-        -webkit-animation: blink 1s infinite;
+        transform: translate(-1px, 3px);
         animation: blink 1s infinite;
-      }
-
-      @-webkit-keyframes blink {
-        0%,
-        30%,
-        100% {
-          opacity: 1;
-        }
-        50%,
-        80% {
-          opacity: 0;
-        }
       }
 
       @keyframes blink {
