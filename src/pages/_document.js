@@ -35,6 +35,10 @@ export default class extends Document {
             name="viewport"
             content="width=device-width, user-scalable=no"
           />
+          <meta
+            name="google-site-verification"
+            content="weNzQSO7j69_BGz5Ti7uV6cxSAOyrLWQZP7xySTHEx0"
+          />
           <DefaultStyles />
         </Head>
         <body>
