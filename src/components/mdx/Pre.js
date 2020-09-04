@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeConsumer } from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import createElement from "react-syntax-highlighter/dist/create-element";
+import createElement from "react-syntax-highlighter/dist/cjs/create-element";
 import parseLangOptions from "~/utils/prism/parse-lang-options";
 
 const Code = ({ children, className = "" }) => {

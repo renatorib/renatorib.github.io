@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { prop, ifProp, theme } from "styled-tools";
-import PostAuthor from "~/components/molecules/PostAuthor";
+import PostAuthor from "~/components/post/PostAuthor";
 
 import posts from "~/data/posts";
 

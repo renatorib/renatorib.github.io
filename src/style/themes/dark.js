@@ -1,4 +1,4 @@
-import defaultTheme from "react-syntax-highlighter/dist/styles/prism/atom-dark";
+import defaultTheme from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 import { themeExtend } from "../utils/prism";
 
 const extend = themeExtend(defaultTheme);

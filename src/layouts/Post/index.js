@@ -2,26 +2,25 @@ import React from "react";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { theme, prop, ifProp } from "styled-tools";
-import UILink from "~/components/mdx/Link";
-import { Heading1 } from "~/components/mdx/Heading";
+import * as mdx from "~/components/mdx";
 import SEO from "~/components/SEO";
 
-import PostAuthor from "~/components/molecules/PostAuthor";
+import PostAuthor from "~/components/post/PostAuthor";
 
-const PostWrapper = styled.div`
+const Wrapper = styled.div`
   background: ${theme("bgColor")};
   color: white;
 `;
 
-const PostContainer = styled.div`
+const Container = styled.div`
   position: relative;
   padding: 0 15px;
   max-width: 850px;
   margin: 0 auto;
 `;
 
-const PostCover = styled.div`
-  margin-bottom: 100px;
+const Cover = styled.div`
+  margin-bottom: 60px;
   position: relative;
   width: 100%;
 
@@ -56,11 +55,11 @@ const PostCover = styled.div`
   }
 `;
 
-const PostHeader = styled.div`
+const Header = styled.div`
   padding: 20px 0;
 `;
 
-const PostTitle = styled(Heading1)`
+const Title = styled(mdx.h1)`
   padding: 40px 0 100px 0;
   color: white;
   margin: 0;
@@ -70,11 +69,11 @@ const PostTitle = styled(Heading1)`
   }
 `;
 
-const PostAuthorWrapper = styled.div`
+const AuthorWrapper = styled.div`
   padding-bottom: 40px;
 `;
 
-const NegativeLink = styled(UILink)`
+const NegativeLink = styled(mdx.a)`
   font-weight: bold;
 
   &,
@@ -83,30 +82,56 @@ const NegativeLink = styled(UILink)`
   }
 `;
 
+const Footer = styled.div`
+  background: rgba(0, 0, 0, 0.05);
+  color: #888;
+  padding: 30px 0;
+  margin-top: 30px;
+  font-size: 20px;
+`;
+
 const Post = ({ children, meta = {} }) => (
   <>
     <SEO {...meta} />
-    <PostWrapper>
-      <PostCover src={meta.image} color={meta.color}>
-        <PostHeader>
-          <PostContainer>
+    <Wrapper>
+      <Cover src={meta.image} color={meta.color}>
+        <Header>
+          <Container>
             <Link href="/blog" passHref>
               <NegativeLink>@renatorib/blog</NegativeLink>
             </Link>
-          </PostContainer>
-        </PostHeader>
+          </Container>
+        </Header>
 
-        <PostContainer>
-          <PostTitle>{meta.title}</PostTitle>
+        <Container>
+          <Title>{meta.title}</Title>
           {meta.author && (
-            <PostAuthorWrapper>
+            <AuthorWrapper>
               <PostAuthor {...meta.author} date={meta.date} />
-            </PostAuthorWrapper>
+            </AuthorWrapper>
           )}
-        </PostContainer>
-      </PostCover>
-      <PostContainer>{children}</PostContainer>
-    </PostWrapper>
+        </Container>
+      </Cover>
+      <Container>{children}</Container>
+      <Container>
+        <mdx.p>
+          Don’t forget to follow me on{" "}
+          <mdx.a href="https://twitter.com/renatorib_" target="_blank">
+            twitter
+          </mdx.a>{" "}
+          and{" "}
+          <mdx.a href="https://github.com/renatorib" target="_blank">
+            github
+          </mdx.a>
+          .
+        </mdx.p>
+      </Container>
+      <Footer>
+        <Container>
+          © 2019-present Renato Ribeiro. All Rights Reserved.
+        </Container>
+      </Footer>
+    </Wrapper>
   </>
 );
 
