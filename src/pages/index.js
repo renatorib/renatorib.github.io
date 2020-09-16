@@ -1,31 +1,62 @@
 import React from "react";
-import styled from "styled-components";
+import { keyframes } from "@emotion/core";
+import { Box, Flex } from "react-system";
 
-const Container = styled.div`
-  font-family: "Roboto Mono", monospace;
-  font-size: 16px;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: black;
+const blink = keyframes`
+  0%,
+  30%,
+  100% {
+    opacity: 1;
+  }
+  50%,
+  80% {
+    opacity: 0;
+  }
 `;
 
 export default () => (
-  <Container>
+  <Flex
+    css={{
+      fontFamily: "Roboto Mono, monospace",
+      fontSize: 16,
+      height: "100vh",
+      overflow: "hidden",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "black"
+    }}
+  >
     <div>
-      <div className="center pic-block">
+      <Box p="10px" css={{ textAlign: "center" }}>
         <img
-          className="profile-pic"
+          css={{
+            width: 120,
+            borderRadius: 999,
+            boxShadow: "0 0 0 2px green",
+            border: "4px solid black"
+          }}
           src="https://avatars0.githubusercontent.com/u/3277185"
         />
-      </div>
-      <div className="center info-block">
-        <h1>
-          <span className="typed">Renato Rib</span>
-          <span className="cursor" />
-          <span className="autocomplete">eiro</span>
+      </Box>
+      <Box p="10px" css={{ textAlign: "center" }}>
+        <h1 css={{ fontWeight: 300, margin: 0, padding: 0, fontSize: 0 }}>
+          <span css={{ fontSize: 32, paddingRight: 1, color: "white" }}>
+            Renato Rib
+          </span>
+          <span
+            css={{
+              display: "inline-block",
+              position: "absolute",
+              width: 2,
+              height: 30,
+              background: "green",
+              transform: "translate(-1px, 3px)",
+              animation: `${blink} 1s infinite`
+            }}
+          />
+          <span css={{ fontSize: 32, paddingLeft: 1, color: "#555555" }}>
+            eiro
+          </span>
         </h1>
 
         <div className="sub">software engineer</div>
@@ -59,44 +90,10 @@ export default () => (
             </a>
           </li>
         </ul>
-      </div>
+      </Box>
     </div>
 
     <style jsx>{`
-      .pic-block,
-      .info-block {
-        padding: 10px;
-      }
-
-      .profile-pic {
-        width: 120px;
-        border-radius: 999px;
-
-        box-shadow: 0 0 0 2px green;
-        border: 4px solid black;
-      }
-
-      h1 {
-        font-weight: 300;
-        margin: 0;
-        padding: 0;
-        font-size: 0;
-      }
-
-      h1 span {
-        font-size: 32px;
-      }
-
-      h1 .typed {
-        padding-right: 1px;
-        color: white;
-      }
-
-      h1 .autocomplete {
-        color: #555;
-        padding-left: 1px;
-      }
-
       .sub {
         padding-top: 5px;
         color: #555;
@@ -138,28 +135,6 @@ export default () => (
         color: #00ff00;
         transform: translateY(-3px);
       }
-
-      .cursor {
-        display: inline-block;
-        position: absolute;
-        width: 2px;
-        height: 30px;
-        background: green;
-        transform: translate(-1px, 3px);
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        30%,
-        100% {
-          opacity: 1;
-        }
-        50%,
-        80% {
-          opacity: 0;
-        }
-      }
     `}</style>
-  </Container>
+  </Flex>
 );

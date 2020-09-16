@@ -12,17 +12,20 @@ const extract = dir => {
   try {
     const tree = mdxToHast(fs.readFileSync("./posts/" + dir + "/index.mdx"));
 
-    const [, date, slug] = dir.match(/(\d{4}-\d{2}-\d{2})-(.+)/) || [];
+    const [, datestring, slug] = dir.match(/(\d{4}-\d{2}-\d{2})-(.+)/) || [];
 
-    if (!date || !slug) {
+    if (!datestring || !slug) {
       throw new Error(
         `Post folder bad formatted for ${dir}, please use this format: 'YYYY-MM-DD-my-postslug'`
       );
     }
 
+    const date = new Date(datestring + " GMT-0300");
+
     const meta = {
       title: getTitle(tree),
-      date: new Date(date + " GMT-0300").toUTCString(),
+      date: date.toUTCString(),
+      datetime: date.getTime(),
       slug,
       dir
     };
@@ -38,6 +41,7 @@ const getPosts = () =>
   fs
     .readdirSync("./posts")
     .map(extract)
+    .sort((a, b) => b.datetime - a.datetime)
     .filter(Boolean);
 
 module.exports = {
