@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTheme } from "emotion-theming";
 import { Box, useSystem } from "react-system";
