@@ -8,8 +8,8 @@ const theme = {
   textFontFamily: "PT Serif, serif",
   codeFontFamily: "Fira Code, Consolata, monospace",
 
-  bgColor: "#F8F8F8",
-  bgBlockColor: "#EEEEEE",
+  bgColor: "#ffffff",
+  bgBlockColor: "#F3F8FB",
   titleColor: "#222",
   textColor: "#5b6987",
   opaqueTextColor: "#888",
@@ -18,7 +18,7 @@ const theme = {
 
   palette: {
     color: ["#000000", "#222222", "#444444"],
-    background: ["#FFFFFF", "#F8F8F8", "#EEEEEE"]
+    background: ["#FFFFFF", "#F3F8FB", "#DFE4E7"]
   },
 
   prism: {
@@ -37,7 +37,7 @@ const theme = {
     ),
     ...extend('pre[class*="language-"]', {
       textShadow: "none",
-      background: "#EEEEEE",
+      background: "#F3F8FB",
       borderRadius: "4px",
       fontFamily: "Fira Code, Consolata, monospace",
       padding: "1em 0"

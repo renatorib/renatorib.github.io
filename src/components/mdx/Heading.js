@@ -46,7 +46,7 @@ const HeadingGeneric = props => {
       {...props}
       css={{
         position: "relative",
-        fontWeight: "100",
+        fontWeight: "bold",
         color: titleColor,
         fontFamily: titleFontFamily,
         "&:hover .heading-anchor": {

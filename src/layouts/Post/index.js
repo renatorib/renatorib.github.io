@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTheme } from "emotion-theming";
 import { Box, useSystem } from "react-system";
+import { Header } from "~/sections/Header";
 import * as mdx from "~/components/mdx";
 import SEO from "~/components/SEO";
 
@@ -69,21 +70,7 @@ const Post = ({ children, meta = {} }) => {
           color={meta.color}
           layoutId={`post-cover-${meta.datetime}`}
         >
-          <Box padding="20px 0">
-            <Container>
-              <Link href="/blog" passHref>
-                <mdx.a
-                  css={{
-                    fontWeight: "bold",
-                    color: "rgba(255, 255, 255, 0.3)",
-                    "&:visited": { color: "rgba(255, 255, 255, 0.3)" }
-                  }}
-                >
-                  @renatorib/blog
-                </mdx.a>
-              </Link>
-            </Container>
-          </Box>
+          <Header size="small" background="transparent" />
 
           <Container>
             <Box css={media({ padding: ["20px 0 40px 0", "40px 0 100px 0"] })}>

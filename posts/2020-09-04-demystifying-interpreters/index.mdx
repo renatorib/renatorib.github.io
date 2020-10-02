@@ -57,13 +57,23 @@ const lexer = (input /*: string */) => {
 
   while (pointer < input.length) {
     // continues execution until the pointer is at the end of the input
-    let char = input[pointer]; // takes the char corresponding to the pointer position
+    let char = input[pointer]; // takes the char corresponding to the pointer pos
 
-    /**
-     * performs logic based on the char found
-     */
+    if (/* char is token A */) {
+      // performs logic based on the char found and
+      // advances the pointer to continue the execution of the while
+      tokens.push({ token: "A" });
+      pointer++;
+    }
 
-    pointer++; // advances the pointer to continue the execution of the while
+    if (/* char is B */) {
+      tokens.push({ token: "B" });
+      pointer++;
+    }
+
+    // at the end of the while
+    // throw an error for unhandled characters
+    throw new Error(`Unexpected char ${char}`);
   }
 };
 ```
@@ -108,8 +118,6 @@ const lexer = input => {
       continue;
     }
 
-    // at the end of the while
-    // throw an error for unhandled characters
     throw new Error(`Unexpected char ${char}`);
   }
 };

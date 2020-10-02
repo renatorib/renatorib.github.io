@@ -6,15 +6,15 @@ import { extractCritical } from "emotion-server";
 export default class extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    const emotionStyles = extractCritical(initialProps.html);
+    const styles = extractCritical(initialProps.html);
     return {
       ...initialProps,
       styles: (
         <>
           {initialProps.styles}
           <style
-            data-emotion-css={emotionStyles.ids.join(" ")}
-            dangerouslySetInnerHTML={{ __html: emotionStyles.css }}
+            data-emotion-css={styles.ids.join(" ")}
+            dangerouslySetInnerHTML={{ __html: styles.css }}
           />
         </>
       )
