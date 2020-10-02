@@ -1,10 +1,15 @@
 import React from "react";
-import { ThemeConsumer } from "styled-components";
+import { useTheme } from "emotion-theming";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import createElement from "react-syntax-highlighter/dist/cjs/create-element";
 import parseLangOptions from "~/utils/prism/parse-lang-options";
 
-const Code = ({ children, className = "" }) => {
+const lineStyles = {
+  padding: "0 1em"
+};
+
+const Pre = ({ children, className = "" }) => {
+  const theme = useTheme();
   const parsed = parseLangOptions(className.replace("language-", ""));
 
   const {
@@ -14,59 +19,59 @@ const Code = ({ children, className = "" }) => {
   } = parsed;
 
   return (
-    <ThemeConsumer>
-      {theme => (
-        <SyntaxHighlighter
-          style={theme.prism}
-          language={lang}
-          showLineNumbers={lines}
-          startingLineNumber={parseInt(start, 10)}
-          lineNumberStyle={{ opacity: "0.2" }}
-          renderer={({ rows, stylesheet, useInlineStyles }) => {
-            return rows.map((node, i) => {
-              const line = (config = {}) =>
-                createElement({
-                  node,
-                  stylesheet,
-                  useInlineStyles,
-                  key: `code-segement${i}`,
-                  ...config
-                });
-
-              if (highlightLines.includes(i + 1)) {
-                return (
-                  <div
-                    style={{
-                      opacity: 1,
-                      background: !focus ? "rgba(0, 0, 0, 0.03)" : "transparent"
-                    }}
-                    key={`code-segment${i}`}
-                  >
-                    {line()}
-                  </div>
-                );
-              }
-
-              if (highlightLines.length > 0) {
-                return (
-                  <div
-                    style={{ opacity: focus ? 0.2 : 0.5 }}
-                    key={`code-segment${i}`}
-                  >
-                    {line({ useInlineStyles: !focus })}
-                  </div>
-                );
-              }
-
-              return line();
+    <SyntaxHighlighter
+      style={theme.prism}
+      language={lang}
+      showLineNumbers={lines}
+      startingLineNumber={parseInt(start, 10)}
+      lineNumberStyle={{ opacity: "0.2" }}
+      renderer={({ rows, stylesheet, useInlineStyles }) => {
+        return rows.map((node, i) => {
+          const line = (config = {}) =>
+            createElement({
+              node,
+              stylesheet,
+              useInlineStyles,
+              key: `code-segement${i}`,
+              ...config
             });
-          }}
-        >
-          {children.slice(0, -1)}
-        </SyntaxHighlighter>
-      )}
-    </ThemeConsumer>
+
+          if (highlightLines.includes(i + 1)) {
+            return (
+              <div
+                style={{
+                  ...lineStyles,
+                  opacity: 1
+                }}
+                key={`code-segment${i}`}
+              >
+                {line()}
+              </div>
+            );
+          }
+
+          if (highlightLines.length > 0) {
+            return (
+              <div
+                style={{ ...lineStyles, opacity: focus ? 0.15 : 0.35 }}
+                key={`code-segment${i}`}
+              >
+                {line({ useInlineStyles: !focus })}
+              </div>
+            );
+          }
+
+          return (
+            <div key={`code-segment${i}`} style={lineStyles}>
+              {line()}
+            </div>
+          );
+        });
+      }}
+    >
+      {children.slice(0, -1)}
+    </SyntaxHighlighter>
   );
 };
 
-export default Code;
+export default Pre;

@@ -1,54 +1,46 @@
 import React from "react";
-import styled from "styled-components";
 import format from "date-fns/format";
 import Link from "~/components/mdx/Link";
-import { theme, prop } from "styled-tools";
-
-const Wrapper = styled.div`
-  display: flex;
-  border-radius: 99px;
-  color: white;
-  font-family: ${theme("titleFontFamily")};
-  padding: 2px;
-`;
-
-const Avatar = styled.img`
-  max-width: 100%;
-  border-radius: 999px;
-  margin-right: 10px;
-  width: ${prop("size", "60px")};
-  height: ${prop("size", "60px")};
-  border: 2px solid transparent;
-  box-shadow: 0 0 0 2px lime;
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const StyledLink = styled(Link)`
-  font-weight: bold;
-
-  &,
-  &:visited {
-    color: white;
-  }
-`;
+import { Flex } from "react-system";
 
 const PostAuthor = ({ avatar, name, profiles, date, ...props }) => (
-  <Wrapper {...props}>
-    {avatar && <Avatar src={avatar} />}
-    <Content>
+  <Flex
+    css={{
+      borderRadius: "99px",
+      color: "white",
+      fontFamily: "PT Sans, sans-serif",
+      padding: "2px"
+    }}
+    {...props}
+  >
+    {avatar && (
+      <img
+        src={avatar}
+        css={{
+          maxWidth: "100%",
+          borderRadius: "999px",
+          width: "60px",
+          height: "60px",
+          border: "2px solid transparent",
+          boxShadow: "0 0 0 2px lime",
+          marginRight: "20px"
+        }}
+      />
+    )}
+    <Flex flexDirection="column" justifyContent="center">
       <div>
-        <StyledLink
+        <Link
           href={profiles[0].url}
           rel="noopener noreferrer"
           target="_blank"
+          css={{
+            fontWeight: "bold",
+            color: "white",
+            "&:visited": { color: "white" }
+          }}
         >
           {name}
-        </StyledLink>
+        </Link>
       </div>
       {date ? (
         <div>
@@ -57,8 +49,8 @@ const PostAuthor = ({ avatar, name, profiles, date, ...props }) => (
       ) : (
         <div>Unknown date</div>
       )}
-    </Content>
-  </Wrapper>
+    </Flex>
+  </Flex>
 );
 
 export default PostAuthor;

@@ -1,118 +1,111 @@
 import React from "react";
 import Link from "next/link";
-import styled, { css } from "styled-components";
-import { prop, ifProp, theme } from "styled-tools";
-import PostAuthor from "~/components/post/PostAuthor";
+
+import format from "date-fns/format";
+import { motion } from "framer-motion";
+import { Box, Flex } from "react-system";
+import { Grid } from "~/components/Grid";
 
 import posts from "~/data/posts";
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 900px;
-`;
+const PostTeaser = React.forwardRef(({ image, children, ...rest }, ref) => (
+  <Box
+    as="a"
+    css={{
+      zIndex: 0,
+      display: "block",
+      cursor: "pointer",
+      overflow: "hidden",
+      borderRadius: "3px",
 
-const Title = styled.div`
-  font-size: 28px;
-  font-family: ${theme("titleFontFamily")};
-  padding: 20px 0;
-`;
+      boxShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
+      transition: "all 200ms ease",
+      opacity: 0.95,
+      willChange: "transform, box-shadow",
 
-const PostTeaser = styled.div`
-  z-index: 0;
-  padding: 30px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  border-radius: 3px;
-
-  &::before {
-    z-index: -2;
-    content: "";
-    display: block;
-    position: absolute;
-    ${ifProp(
-      "image",
-      css`
-        background: url(${prop("image")});
-      `
-    )}
-    background-size: cover;
-    background-position: center center;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  &::after {
-    z-index: -1;
-    content: "";
-    display: block;
-    position: absolute;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 30, 0, 0.5) 0%,
-      rgba(0, 30, 30, 0.5) 100%
-    );
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  transition: all 200ms ease;
-  opacity: 0.95;
-  will-change: transform, box-shadow;
-  &:hover {
-    opacity: 1;
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-const PostTitle = styled.div`
-  font-size: 36px;
-  color: white;
-  font-family: ${theme("titleFontFamily")};
-`;
-
-const List = styled.div`
-  > ${PostTeaser}:not(:last-of-type) {
-    margin-bottom: 10px;
-  }
-`;
-
-const PostAuthorWrapper = styled.div`
-  opacity: 0.8;
-  margin-top: 20px;
-`;
+      "&:hover": {
+        opacity: 1,
+        transform: "translateY(-5px)",
+        boxShadow: "0 5px 10px rgba(0, 0, 0, 0.2)"
+      }
+    }}
+    ref={ref}
+    {...rest}
+  >
+    <Box
+      css={{
+        zIndex: -2,
+        background: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center center"
+      }}
+    >
+      <Box
+        css={{
+          zIndex: -1,
+          background: `linear-gradient(
+          to bottom,
+          rgba(0, 30, 0, 0.5) 0%,
+          rgba(0, 30, 30, 0.5) 100%
+        )`
+        }}
+      >
+        <Box p="30px">{children}</Box>
+      </Box>
+    </Box>
+  </Box>
+));
 
 const Blog = () => (
-  <Wrapper>
-    <Title>Latest Posts</Title>
-    <List>
+  <Box css={{ margin: "0 auto", maxWidth: "900px" }}>
+    <Box
+      css={{
+        fontSize: 28,
+        fontFamily: "PT Sans, sans-serif",
+        padding: "20px 0"
+      }}
+    >
+      Latest Posts
+    </Box>
+    <Grid gap="10px">
       {posts.map(post => (
-        <Link
-          href="/blog/[slug]"
-          as={`/blog/${post.slug}`}
-          prefetch
+        <motion.div
           key={post.mdx.meta.title}
+          layoutId={`post-cover-${post.mdx.meta.datetime}`}
         >
-          <PostTeaser image={post.mdx.meta.image} color={post.mdx.meta.color}>
-            <PostTitle>{post.mdx.meta.title}</PostTitle>
-            <PostAuthorWrapper>
-              <PostAuthor
-                {...post.mdx.meta.author}
-                date={post.mdx.meta.date}
-                avatar={null}
-              />
-            </PostAuthorWrapper>
-          </PostTeaser>
-        </Link>
+          <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
+            <PostTeaser image={post.mdx.meta.image}>
+              <Box
+                css={{
+                  fontSize: 36,
+                  color: "white",
+                  fontFamily: "PT Sans, sans-serif"
+                }}
+              >
+                {post.mdx.meta.title}
+              </Box>
+              <Box css={{ opacity: 0.8, marginTop: 20 }}>
+                <Flex
+                  flexDirection="column"
+                  justifyContent="center"
+                  css={{ fontFamily: "PT Sans, sans-serif" }}
+                >
+                  <Box css={{ color: "white", fontWeight: "bold" }}>
+                    {post.mdx.meta.author.name}
+                  </Box>
+                  <Box css={{ color: "white" }}>
+                    <time dateTime={post.mdx.meta.date}>
+                      {format(post.mdx.meta.date, "MMM D, YYYY")}
+                    </time>
+                  </Box>
+                </Flex>
+              </Box>
+            </PostTeaser>
+          </Link>
+        </motion.div>
       ))}
-    </List>
-  </Wrapper>
+    </Grid>
+  </Box>
 );
 
 export default Blog;

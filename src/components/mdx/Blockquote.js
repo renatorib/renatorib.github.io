@@ -1,45 +1,52 @@
-import styled from "styled-components";
-import { theme } from "styled-tools";
+import React from "react";
+import { Box } from "react-system";
+import { useTheme } from "emotion-theming";
 
-import Paragraph from "./Paragraph";
+const Blockquote = props => {
+  const { bgBlockColor, textFontFamily, opaqueTextColor, bgColor } = useTheme();
 
-const BaseBlockquote = styled.blockquote`
-  margin: 20px 0;
-  padding: 10px 20px;
-  border-left: 7px solid rgba(0, 0, 0, 0.06);
-  background: ${theme("bgBlockColor")};
-  font-style: italic;
-  font-family: ${theme("textFontFamily")}
-  color: ${theme("opaqueTextColor")};
-  border-radius: 0 5px 5px 0;
+  return (
+    <Box
+      as="blockquote"
+      className="blockquote"
+      css={{
+        margin: "20px 0",
+        padding: "10px 20px",
+        borderLeft: "7px solid rgba(0, 0, 0, 0.06)",
+        background: bgBlockColor,
+        fontStyle: "italic",
+        fontFamily: textFontFamily,
+        color: opaqueTextColor,
+        borderRadius: "0 5px 5px 0",
 
-  ${Paragraph} {
-    color: ${theme("opaqueTextColor")};
-  }
-`;
+        "& p": {
+          color: opaqueTextColor
+        },
 
-const Blockquote = styled(BaseBlockquote)`
-  /* nested blockquote has different styles */
-  ${BaseBlockquote} {
-    padding: 10px 15px;
-    border-radius: 1px;
-    border-left: none;
-    font-style: normal;
-    background: ${theme("bgColor")};
+        // nested blockquote have different styles
+        "& .blockquote": {
+          padding: "10px 15px",
+          borderRadius: "1px",
+          borderLeft: "none",
+          fontStyle: "normal",
+          background: bgColor,
 
-    ${Paragraph} {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-
-      &:first-of-type {
-        margin-top: 0;
-      }
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-  }
-`;
+          "& p": {
+            margin: 0,
+            padding: 0,
+            fontSize: "16px",
+            "&:first-of-type": {
+              marginTop: 0
+            },
+            "&:last-of-type": {
+              marginBottom: 0
+            }
+          }
+        }
+      }}
+      {...props}
+    />
+  );
+};
 
 export default Blockquote;

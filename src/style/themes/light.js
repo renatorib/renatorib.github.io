@@ -9,16 +9,16 @@ const theme = {
   codeFontFamily: "Fira Code, Consolata, monospace",
 
   bgColor: "#F8F8F8",
-  bgBlockColor: "#EFEFEF",
+  bgBlockColor: "#EEEEEE",
   titleColor: "#222",
-  textColor: "#666",
+  textColor: "#5b6987",
   opaqueTextColor: "#888",
 
   highlightColor: "lime",
 
   palette: {
     color: ["#000000", "#222222", "#444444"],
-    background: ["#FFFFFF", "#F8F8F8", "#EFEFEF"]
+    background: ["#FFFFFF", "#F8F8F8", "#EEEEEE"]
   },
 
   prism: {
@@ -37,9 +37,10 @@ const theme = {
     ),
     ...extend('pre[class*="language-"]', {
       textShadow: "none",
-      background: "#EFEFEF",
+      background: "#EEEEEE",
       borderRadius: "4px",
-      fontFamily: "Fira Code, Consolata, monospace"
+      fontFamily: "Fira Code, Consolata, monospace",
+      padding: "1em 0"
     }),
     ...extend('code[class*="language-"]', {
       fontFamily: "Fira Code, Consolata, monospace",

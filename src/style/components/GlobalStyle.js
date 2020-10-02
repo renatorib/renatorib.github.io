@@ -1,24 +1,35 @@
-import { createGlobalStyle } from "styled-components";
-import { theme } from "styled-tools";
+import React from "react";
+import { Global, css } from "@emotion/core";
+import { useTheme } from "emotion-theming";
 
-const GlobalStyle = createGlobalStyle`
-  *::selection {
-    color: black;
-    background: ${theme("highlightColor")};
-  }
+const GlobalStyle = () => {
+  const { highlightColor, textColor, bgColor, textFontFamily } = useTheme();
 
-  *, *:after, *:before {
-    box-sizing: border-box;
-  }
+  return (
+    <Global
+      styles={css`
+        *::selection {
+          color: black;
+          background: ${highlightColor};
+        }
 
-  body {
-    color: ${theme("textColor")};
-    background: ${theme("bgColor")};
-    font-family: ${theme("textFontFamily")};
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-  }
-`;
+        *,
+        *:after,
+        *:before {
+          box-sizing: border-box;
+        }
+
+        body {
+          color: ${textColor};
+          background: ${bgColor};
+          font-family: ${textFontFamily};
+          min-height: 100vh;
+          padding: 0;
+          margin: 0;
+        }
+      `}
+    />
+  );
+};
 
 export default GlobalStyle;

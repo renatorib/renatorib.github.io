@@ -1,8 +1,8 @@
-import styled from "styled-components";
-// import { theme } from "styled-tools";
+import React from "react";
+import { Box } from "react-system";
 
-const Image = styled.img`
-  margin: 0 auto;
-`;
+const Image = props => (
+  <Box as="img" css={{ margin: "0 auto", maxWidth: "100%" }} {...props} />
+);
 
 export default Image;
