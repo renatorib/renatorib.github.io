@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{"1HF/":function(n,t,e){(window.__NEXT_P=window.__NEXT_P||[]).push(["/_error",function(){var n=e("URMD");return{page:n.default||n}}])},URMD:function(n,t,e){"use strict";e.r(t);var o=e("q1tI"),u=e.n(o);t.default=function(){return u.a.createElement("div",null,"Not found")}}},[["1HF/",1,0]]]);
