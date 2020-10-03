@@ -19,6 +19,7 @@ export const PostTeaser = ({ slug, mdx }) => {
             cursor: "pointer",
             overflow: "hidden",
             borderRadius: "3px",
+            padding: "30px",
 
             background: bgBlockColor,
             transition: "all 200ms ease",
@@ -33,47 +34,43 @@ export const PostTeaser = ({ slug, mdx }) => {
             }
           }}
         >
-          <Box p="30px">
-            <Box
-              css={{
-                fontSize: 32,
-                fontFamily: titleFontFamily,
-                color: "#2f3646"
-              }}
-            >
-              {mdx.meta.title}
-            </Box>
-            {mdx.meta.subtitle && (
-              <Box css={{ marginTop: 10, fontSize: 22 }}>
-                {mdx.meta.subtitle}
-              </Box>
-            )}
-            <Box
-              css={{
-                opacity: 0.8,
-                marginTop: 30,
-                color: "#a8adbe",
-                fontFamily: titleFontFamily,
-                fontSize: 14
-              }}
-            >
-              <Box as="span" css={{ color: "#2f3646", paddingRight: 8 }}>
-                <time dateTime={mdx.meta.date}>
-                  {format(mdx.meta.date, "MMM D, YYYY")}
-                </time>
-              </Box>
-              <Box as="span" css={{ color: "#a8adbe" }}>
-                by {mdx.meta.author.name} (5 min read)
-              </Box>
-            </Box>
-            {mdx.meta.tags && (
-              <Box css={{ marginTop: 20, fontFamily: titleFontFamily }}>
-                {mdx.meta.tags.map(tagName => (
-                  <TagPill key={tagName} name={tagName} />
-                ))}
-              </Box>
-            )}
+          <Box
+            css={{
+              fontSize: 32,
+              fontFamily: titleFontFamily,
+              color: "#2f3646"
+            }}
+          >
+            {mdx.meta.title}
           </Box>
+          {mdx.meta.subtitle && (
+            <Box css={{ marginTop: 10, fontSize: 22 }}>{mdx.meta.subtitle}</Box>
+          )}
+          <Box
+            css={{
+              opacity: 0.8,
+              marginTop: 30,
+              color: "#a8adbe",
+              fontFamily: titleFontFamily,
+              fontSize: 14
+            }}
+          >
+            <Box as="span" css={{ color: "#2f3646", paddingRight: 8 }}>
+              <time dateTime={mdx.meta.date}>
+                {format(mdx.meta.date, "MMM D, YYYY")}
+              </time>
+            </Box>
+            <Box as="span" css={{ color: "#a8adbe" }}>
+              by {mdx.meta.author.name} (5 min read)
+            </Box>
+          </Box>
+          {mdx.meta.tags && (
+            <Box css={{ marginTop: 20, fontFamily: titleFontFamily }}>
+              {mdx.meta.tags.map(tagName => (
+                <TagPill key={tagName} name={tagName} />
+              ))}
+            </Box>
+          )}
         </Box>
       </motion.div>
     </Link>
