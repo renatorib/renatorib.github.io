@@ -104,7 +104,7 @@ input[pointer]; // input[2] -> '*'
 
 Whitespaces are essential for writing readable code, and in many cases they also have a syntactic role. In our case, they will just be ignored. So when our lexer finds a whitespace, it just goes on:
 
-```js{8-18}{focus}
+```js{8-14}{focus}
 const lexer = input => {
   let tokens = [];
   let pointer = 0;
