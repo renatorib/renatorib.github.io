@@ -5,7 +5,7 @@ import { useTheme } from "emotion-theming";
 import { LogoIcon } from "~/components/LogoIcon";
 import { Container } from "~/components/Container";
 
-const HeaderLink = props => (
+const HeaderLink = React.forwardRef((props, ref) => (
   <a
     css={{
       fontSize: 12,
@@ -14,9 +14,10 @@ const HeaderLink = props => (
       letterSpacing: 1,
       padding: "2px 10px"
     }}
+    ref={ref}
     {...props}
   />
-);
+));
 
 export const Header = ({ size = "small", background = "transparent" }) => {
   const { titleFontFamily, titleColor, textColor } = useTheme();

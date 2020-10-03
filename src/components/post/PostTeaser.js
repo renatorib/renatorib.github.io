@@ -9,8 +9,8 @@ export const PostTeaser = ({ slug, mdx }) => {
   const { titleFontFamily, bgBlockColor } = useTheme();
 
   return (
-    <Link href="/blog/[slug]" as={`/blog/${slug}`} passHref>
-      <motion.div key={mdx.meta.title} layoutId={`post-cover-${slug}`}>
+    <motion.div key={mdx.meta.title} layoutId={`post-cover-${slug}`}>
+      <Link href="/blog/[slug]" as={`/blog/${slug}`} passHref>
         <Box
           as="a"
           css={{
@@ -72,8 +72,8 @@ export const PostTeaser = ({ slug, mdx }) => {
             </Box>
           )}
         </Box>
-      </motion.div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 };
 
