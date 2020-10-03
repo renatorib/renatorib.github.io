@@ -4,23 +4,25 @@ import { Footer } from "~/sections/Footer";
 import { Container } from "~/components/Container";
 import SEO from "~/components/SEO";
 
-import posts from "~/data/posts";
+import { getAllPostsByTag } from "~/data/posts";
 import { PostsList } from "~/components/post/PostsList";
 
-const Blog = () => {
+const Tag = ({ slug }) => {
   return (
     <>
       <SEO
-        title="blog - rena.to"
+        title={`${slug} - rena.to`}
         description="Renato Ribeiro, Software Engineer."
       />
       <Header />
       <Container>
-        <PostsList posts={posts} title={`recently published`} />
+        <PostsList posts={getAllPostsByTag(slug)} title={`Tag: ${slug}`} />
       </Container>
       <Footer />
     </>
   );
 };
 
-export default Blog;
+Tag.getInitialProps = ctx => ({ slug: ctx.query.slug });
+
+export default Tag;

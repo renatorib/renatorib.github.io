@@ -5,7 +5,7 @@ const rawPosts =
   preval`module.exports = require('../../scripts/get-posts.js').getPosts()` ||
   [];
 
-const posts = rawPosts
+export const posts = rawPosts
   .map(({ slug, dir, ...meta }) => {
     try {
       const mdx = require(`../../posts/${dir}/index.mdx`);
@@ -17,7 +17,7 @@ const posts = rawPosts
           meta: {
             ...meta, // default meta extracted from mdx ast
             ...mdx.meta, // can be override by explicit meta from mdx file
-            author: authors[mdx.meta.authors] || authors.renatorib
+            author: authors[mdx.meta.author] || authors.renatorib
           }
         }
       };
@@ -27,5 +27,18 @@ const posts = rawPosts
     }
   })
   .filter(Boolean);
+
+export const getAllPostsByTag = tag =>
+  posts.filter(post => (post.mdx?.meta?.tags || []).includes(tag));
+
+export const getAllPostsByAuthor = slug =>
+  posts.filter(post => post.mdx?.meta?.author?.slug === slug);
+
+export const getAllTags = () => {
+  const tags = new Set();
+  posts.forEach(post =>
+    (post.mdx?.meta?.tags || []).forEach(tagName => tags.add(tagName))
+  );
+};
 
 export default posts;

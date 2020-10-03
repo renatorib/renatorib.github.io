@@ -1,5 +1,6 @@
 const authors = {
   renatorib: {
+    slug: "renatorib",
     name: "Renato Ribeiro",
     avatar: "https://avatars2.githubusercontent.com/u/3277185?s=200",
     profiles: [

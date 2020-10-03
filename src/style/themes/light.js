@@ -4,9 +4,9 @@ import { themeExtend } from "../utils/prism";
 const extend = themeExtend(defaultTheme);
 
 const theme = {
-  titleFontFamily: "PT Sans, sans-serif",
-  textFontFamily: "PT Serif, serif",
-  codeFontFamily: "Fira Code, Consolata, monospace",
+  titleFontFamily: '"PT Sans", sans-serif',
+  textFontFamily: '"PT Serif", serif',
+  codeFontFamily: '"Fira Code", Consolata, monospace',
 
   bgColor: "#ffffff",
   bgBlockColor: "#F3F8FB",

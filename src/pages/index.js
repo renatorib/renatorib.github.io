@@ -17,7 +17,7 @@ const blink = keyframes`
 
 export default () => (
   <>
-    <SEO title="@renatorib" description="Renato Ribeiro; Software Engineer." />
+    <SEO title="rena.to" description="Renato Ribeiro, Software Engineer." />
     <Flex
       css={{
         fontFamily: "Roboto Mono, monospace",

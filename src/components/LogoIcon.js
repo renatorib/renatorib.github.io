@@ -1,5 +1,23 @@
 import React from "react";
 
-export const LogoIcon = ({ size = 80 }) => (
-  <img src={require("~/images/icon-logo.png")} css={{ width: size }} />
-);
+import normalIconLogo from "~/images/icon-logo.png";
+import blackIconLogo from "~/images/icon-logo-outline.png";
+import whiteIconLogo from "~/images/icon-logo-outline-white.png";
+
+export const LogoIcon = ({ size = 80, type = "color" }) => {
+  let url = "";
+
+  switch (type) {
+    case "white":
+      url = whiteIconLogo;
+      break;
+    case "black":
+      url = blackIconLogo;
+      break;
+    case "color":
+    default:
+      url = normalIconLogo;
+  }
+
+  return <img src={url} alt="" css={{ width: size }} />;
+};
