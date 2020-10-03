@@ -1,1 +1,0 @@
-_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[10],{"1HF/":function(n,t,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/_error",function(){return o("URMD")}])},URMD:function(n,t,o){"use strict";o.r(t);var _=o("q1tI"),e=o.n(_),u=o("qKvR");e.a.createElement;t.default=function(){return Object(u.d)("div",null,"Not found")}}},[["1HF/",0,2,1]]]);
