@@ -9,7 +9,7 @@ const lexerClass = css`
   background: black;
   color: white;
   margin: 2em auto;
-  font-family: "Roboto", "sans-serif";
+  font-family: "Roboto", sans-serif;
 
   & .input {
     height: 40px;
@@ -186,7 +186,7 @@ const lexerClass = css`
 
     & ul li pre {
       margin: 0;
-      font-family: "Roboto", "sans-serif";
+      font-family: "Roboto", sans-serif;
       display: inline-block;
 
       &.mono {
