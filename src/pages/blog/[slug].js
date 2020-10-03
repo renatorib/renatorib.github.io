@@ -1,6 +1,5 @@
 import React from "react";
 import format from "date-fns/format";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTheme } from "emotion-theming";
 import { Box, Flex, useSystem } from "react-system";
@@ -10,6 +9,7 @@ import { Container } from "~/components/Container";
 import posts from "~/data/posts";
 import * as mdx from "~/components/mdx";
 import SEO from "~/components/SEO";
+import twitterIcon from "~/images/twitter-icon.png";
 
 const Cover = ({ color, children, ...rest }) => {
   const { bgBlockColor } = useTheme();
@@ -56,19 +56,18 @@ const PostAuthor = ({ avatar, name, profiles, date, ...props }) => {
         />
       )}
       <Flex flexDirection="column" justifyContent="center">
-        <div>
-          <Link
-            href={profiles[0].url}
-            rel="noopener noreferrer"
-            target="_blank"
-            css={{
-              fontWeight: "bold",
-              color: textColor,
-              "&:visited": { color: textColor }
-            }}
-          >
+        <div css={{ fontWeight: "bold" }}>
+          <a href={profiles[0].url} rel="noopener noreferrer" target="_blank">
             {name}
-          </Link>
+            <img
+              src={twitterIcon}
+              css={{
+                display: "inline",
+                height: 11,
+                paddingLeft: 5
+              }}
+            />
+          </a>
         </div>
         {date ? (
           <div>
@@ -127,10 +126,16 @@ const Post = ({ slug }) => {
 
             <Container>
               <Box
-                css={media({ padding: ["20px 0 40px 0", "80px 0 100px 0"] })}
+                css={media({ padding: ["40px 0 60px 0", "80px 0 100px 0"] })}
               >
                 <mdx.h1 css={{ margin: 0, color: titleColor }}>{title}</mdx.h1>
-                <div css={{ fontSize: 26, paddingTop: 20, color: textColor }}>
+                <div
+                  css={media({
+                    fontSize: [22, 26],
+                    paddingTop: 20,
+                    color: textColor
+                  })}
+                >
                   {subtitle}
                 </div>
               </Box>

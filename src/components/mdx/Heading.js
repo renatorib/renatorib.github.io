@@ -11,7 +11,7 @@ export const Heading1 = ({ ...props }) => {
     <Box
       as="h1"
       css={media({
-        fontSize: [32, 60],
+        fontSize: [36, 60],
         fontWeight: 100,
         color: titleColor,
         fontFamily: titleFontFamily
