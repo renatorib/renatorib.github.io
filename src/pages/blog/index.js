@@ -7,6 +7,7 @@ import { Box, Flex } from "react-system";
 import { Header } from "~/sections/Header";
 import { Footer } from "~/sections/Footer";
 import { Grid } from "~/components/Grid";
+import SEO from "~/components/SEO";
 
 import posts from "~/data/posts";
 
@@ -60,6 +61,7 @@ const PostTeaser = React.forwardRef(({ image, children, ...rest }, ref) => (
 
 const Blog = () => (
   <>
+    <SEO title="@renatorib" description="Renato Ribeiro; Software Engineer." />
     <Header />
     <Box css={{ margin: "0 auto", maxWidth: "850px" }}>
       <Box
