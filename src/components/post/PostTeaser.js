@@ -61,7 +61,7 @@ export const PostTeaser = ({ slug, mdx }) => {
               </time>
             </Box>
             <Box as="span" css={{ color: "#a8adbe" }}>
-              by {mdx.meta.author.name} (5 min read)
+              by {mdx.meta.author.name}
             </Box>
           </Box>
           {mdx.meta.tags && (
