@@ -4,6 +4,7 @@ export { default as p } from "./Paragraph";
 export { default as blockquote } from "./Blockquote";
 export { default as a } from "./Link";
 export { default as img } from "./Image";
+export { Hr as hr } from "./Hr";
 
 export { Heading1 as h1 } from "./Heading";
 export { Heading2 as h2 } from "./Heading";

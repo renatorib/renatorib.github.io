@@ -1,6 +1,6 @@
 const rangeParser = require("parse-numeric-range");
 
-export default language => {
+const parseLangOptions = language => {
   let lang = language;
   let props = {};
   let highlightLines = [];
@@ -26,3 +26,5 @@ export default language => {
 
   return { lang, props, highlightLines };
 };
+
+export default parseLangOptions;

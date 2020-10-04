@@ -3,7 +3,7 @@ import Document, { Head, Main, NextScript } from "next/document";
 
 import { extractCritical } from "emotion-server";
 
-export default class extends Document {
+export default class CustomDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     const styles = extractCritical(initialProps.html);

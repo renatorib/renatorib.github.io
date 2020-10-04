@@ -1,3 +1,4 @@
 import React from "react";
 
-export default () => <div>Not found</div>;
+const Error = () => <div>Not found</div>;
+export default Error;

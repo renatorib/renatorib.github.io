@@ -1,0 +1,146 @@
+export const meta = {
+  title: "Controlled and uncontrolled inputs",
+  subtitle: "Understand the difference and peculiarities of each one",
+  image: require("./images/controlled-input.png"),
+  author: "renatorib",
+  tags: ["javascript", "react"]
+};
+
+# Controlled and uncontrolled inputs
+
+-->[Alert type=warning]
+**Be aware**. This post is very old and some things may be out of date.
+
+---
+
+If you have been using React for some time, or even if you are a beginner, you probably have seen this **error** around:
+
+<p align="center">
+  <img src={require("./images/error.png")} />
+</p>
+
+But after all, what is this controlled input and uncontrolled input?
+
+## Uncontrolled Input
+
+In summary, it is even redundant to say, but, the uncontrolled input is when he controls the value of himself, he is self-sufficient and does not like anyone to rule him.
+
+```js
+class App extends React.Component {
+  handleInputRef = input => {
+    this.input = input;
+  };
+
+  handleSend = () => {
+    alert(`Your name is ${this.input.value}`);
+  };
+
+  render() {
+    return (
+      <div>
+        Type your name: <input ref={this.handleInputRef} />
+        <button onClick={this.handleSend}>Send</button>
+      </div>
+    );
+  }
+}
+```
+
+If you notice, what happens is that when I type something in the input, I don't save the value anywhere. The input itself saves the value that I type, natively. The state is coupled to the input element. And when I click the send button, I simply take this input by reference and use its value.
+
+## Controlled Input
+
+Since we know that the controlled input is the opposite, it is easy to guess that it is not that self-sufficient, right? Now it depends on us to save its value whenever it is changed, and pass it back to him. However, the input still dictates the rules, after all, it is the input that will tell us when someone changes its value.
+
+```js
+class App extends React.Component {
+  state = {
+    name: ""
+  };
+
+  handleInputChange = event => {
+    this.setState({ name: event.target.name });
+  };
+
+  handleSend = () => {
+    alert(`Your name is ${this.state.name}`);
+  };
+
+  render() {
+    return (
+      <div>
+        Type your name:
+        <input onChange={this.handleInputChange} value={this.state.name} />
+        <button onClick={this.handleSend}>Send</button>
+      </div>
+    );
+  }
+}
+```
+
+Pay attention to what happens in the example above:
+
+1. When I type in the input, the `onChange` event is fired. This is the callback with which the input tells the world that it has changed, that its value has changed.
+2. I save this value in the component's state, and, as you may know, when the component's state changes, the component renders again.
+3. After re-rendering, the value of the input will be "replenished" with the value I saved in the state because the input is bound: `<input value={this.state.name} />`
+
+<p align="center">
+  <img src={require("./images/controlled-input.png")} />
+</p>
+
+In short, you have the impression that the input is acting in the same way as in the previous case of uncontrolled input, but in reality what happens behind it is different. The input sends the new value to the state, and the state causes the component to render the input again with its new value. **It does not change himself** (uncontrolled), it orders the state to change its own value.
+
+That way, if you change the state manually, the value of the input will change too. Now it is the state that controls the value of the input, the state is decoupled from the input.
+
+---
+
+At first sight, it seems that the controlled input is more complicated, isn't it? And it may even be. In fact it is much more verbose (you need to write more code, as you need to save the value). **But do not fool yourself: it is much more powerful, and it makes more sense for the way React works**.
+
+I'll explain. React was designed to be reactive (suggestive, isn't it?). With each simple change of state or prop, React will render it again.
+
+So now understand the case: you have an input that has a pre-defined value:
+
+```js
+const Component = () => (
+  return <input type="text" value="Renato" />;
+);
+```
+
+I just won't be able to change its value because React understands that input value should be “Renato”, and by default, React identifies that **when an input is mounted with a predefined value, this is a controlled input**. So now it is only updated if the value changes by the code. But value is a string, it will never change. It's why we need the state to change the value to us.
+
+<p align="center">
+  <img src={require("./images/dummy.png")} />
+</p>
+
+## Back to the initial error
+
+Now that we know the difference, what about that damn mistake? Why does it happen?
+Now it's a little easier to understand.
+
+<p align="center">
+  <img src={require("./images/whats-wrong.png")} />
+</p>
+
+The error most often happens because of React's typechecking, and not because of the literal practice of changing an input from "uncontrolled" to "controlled".
+
+When we are going to save the value of our input in the state, many times, by mistake or ignorance, we set the initial state to `null` or `undefined`. This means that when the component is mounted, that is, it is **rendered for the first time**, this value is passed to the input (null or undefined), so React understands that this is an **uncontrolled input**. And then, the first time we type something, it starts to set a string to the state value, which is passed on to the value of the input, whose behavior belongs to a **controlled input**.
+
+> To fix it, just start the state with an empty string.
+
+**Wrong**:
+
+```js
+class App extends React.Component {
+  state = { name: null }
+  render() { /* ... */ }
+);
+```
+
+**Right**:
+
+```js
+class App extends React.Component {
+  state = { name: '' }
+  render() { /* ... */ }
+);
+```

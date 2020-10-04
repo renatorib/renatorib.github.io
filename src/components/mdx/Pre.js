@@ -4,8 +4,14 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import createElement from "react-syntax-highlighter/dist/cjs/create-element";
 import parseLangOptions from "~/utils/prism/parse-lang-options";
 
+import { Alert } from "./Alert";
+
 const lineStyles = {
   padding: "0 1em"
+};
+
+const customComponents = {
+  alert: Alert
 };
 
 const Pre = ({ children, className = "" }) => {
@@ -15,8 +21,14 @@ const Pre = ({ children, className = "" }) => {
   const {
     lang,
     highlightLines,
-    props: { start = 1, focus = false, lines = false }
+    props: { name = "", start = 1, focus = false, lines = false }
   } = parsed;
+
+  // Workaround to use ``` syntax to access custom components in mdx
+  if (lang === "component" && !!customComponents[name]) {
+    const Component = customComponents[name];
+    return <Component {...parsed.props}>{children}</Component>;
+  }
 
   return (
     <SyntaxHighlighter

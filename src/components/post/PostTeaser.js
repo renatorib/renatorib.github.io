@@ -64,40 +64,8 @@ export const PostTeaser = ({ slug, mdx }) => {
               by {mdx.meta.author.name}
             </Box>
           </Box>
-          {mdx.meta.tags && (
-            <Box css={{ marginTop: 20, fontFamily: titleFontFamily }}>
-              {mdx.meta.tags.map(tagName => (
-                <TagPill key={tagName} name={tagName} />
-              ))}
-            </Box>
-          )}
         </Box>
       </Link>
     </motion.div>
-  );
-};
-
-const TagPill = ({ name }) => {
-  return (
-    <Link href={`/blog/tag/[name]`} as={`/blog/tag/${name}`} passHref>
-      <Box
-        as="a"
-        css={{
-          border: "1px solid #dcdfe9",
-          borderRadius: "999px",
-          padding: "2px 10px",
-          marginRight: 5,
-          fontSize: 12,
-          opacity: 0.7,
-          transition: "all 150ms ease",
-          "&:hover": {
-            borderColor: "#a5a9b6",
-            opacity: 1
-          }
-        }}
-      >
-        {name}
-      </Box>
-    </Link>
   );
 };

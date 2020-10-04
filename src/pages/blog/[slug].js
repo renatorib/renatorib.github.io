@@ -140,7 +140,7 @@ const Post = ({ slug }) => {
                 </div>
               </Box>
               {author && (
-                <Box css={{ paddingBottom: "40px" }}>
+                <Box css={media({ paddingBottom: ["20px", "40px"] })}>
                   <PostAuthor {...author} date={date} />
                 </Box>
               )}

@@ -45,9 +45,21 @@ const config = {
       {}
     );
 
+    const tagsPathMap = ["tutorial", "javascript", "react"].reduce(
+      (acc, tagName) => ({
+        ...acc,
+        [`/blog/tag/${tagName}`]: {
+          page: "/blog/tag/[slug]",
+          query: { slug: tagName }
+        }
+      }),
+      {}
+    );
+
     return {
       ...defaultPathMap,
       ...postsPathMap,
+      ...tagsPathMap,
       "/404.html": { page: "/_error" }
     };
   }
