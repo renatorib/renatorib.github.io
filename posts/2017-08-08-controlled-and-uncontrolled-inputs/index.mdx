@@ -80,9 +80,11 @@ class App extends React.Component {
 
 Pay attention to what happens in the example above:
 
-1. When I type in the input, the `onChange` event is fired. This is the callback with which the input tells the world that it has changed, that its value has changed.
-2. I save this value in the component's state, and, as you may know, when the component's state changes, the component renders again.
-3. After re-rendering, the value of the input will be "replenished" with the value I saved in the state because the input is bound: `<input value={this.state.name} />`
+**1.** When I type in the input, the `onChange` event is fired. This is the callback with which the input tells the world that it has changed, that its value has changed.
+
+**2.** I save this value in the component's state, and, as you may know, when the component's state changes, the component renders again.
+
+**3.** After re-rendering, the value of the input will be "replenished" with the value I saved in the state because the input is bound: `<input value={this.state.name} />`
 
 <p align="center">
   <img src={require("./images/controlled-input.png")} />
