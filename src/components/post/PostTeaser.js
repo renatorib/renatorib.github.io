@@ -48,21 +48,19 @@ export const PostTeaser = ({ slug, mdx }) => {
           )}
           <Box
             css={{
-              opacity: 0.8,
+              opacity: 1,
               marginTop: 30,
               color: "#a8adbe",
               fontFamily: titleFontFamily,
               fontSize: 14
             }}
           >
-            <Box as="span" css={{ color: "#2f3646", paddingRight: 8 }}>
-              <time dateTime={mdx.meta.date}>
+            <span css={{ fontWeight: "bold" }}>
+              <time dateTime={mdx.meta.datetime}>
                 {format(mdx.meta.date, "MMM D, YYYY")}
               </time>
-            </Box>
-            <Box as="span" css={{ color: "#a8adbe" }}>
-              by {mdx.meta.author.name}
-            </Box>
+            </span>
+            <span> by {mdx.meta.author.name}</span>
           </Box>
         </Box>
       </Link>
