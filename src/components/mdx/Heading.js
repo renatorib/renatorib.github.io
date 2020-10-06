@@ -60,10 +60,13 @@ const HeadingGeneric = props => {
 
 const headingWithAnchorFactory = (h, style = {}) => ({
   children,
+  noAnchor = false,
   ...props
 }) => (
   <HeadingGeneric as={h} {...props} css={style} id={slugify(children)}>
-    <HeadingAnchor href={`#${slugify(children)}`}>#</HeadingAnchor>
+    {!noAnchor && (
+      <HeadingAnchor href={`#${slugify(children)}`}>#</HeadingAnchor>
+    )}
     {children}
   </HeadingGeneric>
 );

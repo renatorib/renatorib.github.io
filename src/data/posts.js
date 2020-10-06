@@ -39,6 +39,7 @@ export const getAllTags = () => {
   posts.forEach(post =>
     (post.mdx?.meta?.tags || []).forEach(tagName => tags.add(tagName))
   );
+  return [...tags];
 };
 
 export default posts;

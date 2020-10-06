@@ -5,22 +5,8 @@ import { useTheme } from "emotion-theming";
 import { LogoIcon } from "~/components/LogoIcon";
 import { Container } from "~/components/Container";
 
-const HeaderLink = React.forwardRef((props, ref) => (
-  <a
-    css={{
-      fontSize: 12,
-      fontWeight: "bold",
-      textTransform: "uppercase",
-      letterSpacing: 1,
-      padding: "2px 10px"
-    }}
-    ref={ref}
-    {...props}
-  />
-));
-
 export const Header = ({ size = "small", background = "transparent" }) => {
-  const { titleFontFamily, titleColor, textColor } = useTheme();
+  const { titleFontFamily, titleColor } = useTheme();
   const { media } = useSystem();
 
   return (
@@ -28,7 +14,7 @@ export const Header = ({ size = "small", background = "transparent" }) => {
       <Box css={{ background, padding: "20px 0", fontFamily: titleFontFamily }}>
         <Container>
           <Flex alignItems="center">
-            <Link href="/blog" passHref>
+            <Link href="/" passHref>
               <Box
                 as="a"
                 css={{
@@ -53,24 +39,10 @@ export const Header = ({ size = "small", background = "transparent" }) => {
                     display: ["none", "inline"]
                   })}
                 >
-                  rena.to
-                  {size === "large" ? <br /> : null}
-                  <strong>/blog</strong>
+                  <strong>rena.to</strong>
                 </Box>
               </Box>
             </Link>
-
-            <Flex ml="auto" css={{ color: textColor }}>
-              <Link href="/blog/tag/tutorial" passHref>
-                <HeaderLink>Tutorial</HeaderLink>
-              </Link>
-              <Link href="/blog/tag/javascript" passHref>
-                <HeaderLink>JavaScript</HeaderLink>
-              </Link>
-              <Link href="/blog/tag/react" passHref>
-                <HeaderLink>React</HeaderLink>
-              </Link>
-            </Flex>
           </Flex>
         </Container>
       </Box>

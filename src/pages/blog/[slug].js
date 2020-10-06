@@ -8,8 +8,10 @@ import { Header } from "~/sections/Header";
 import { Container } from "~/components/Container";
 import posts from "~/data/posts";
 import * as mdx from "~/components/mdx";
+import { Alert } from "~/components/mdx/Alert";
 import SEO from "~/components/SEO";
 import twitterIcon from "~/images/twitter-icon.png";
+import Error from "~/pages/_error";
 
 const Cover = ({ color, children, ...rest }) => {
   const { bgBlockColor } = useTheme();
@@ -103,18 +105,19 @@ const Post = ({ slug }) => {
 
   const { MDXComponent, mdxComponentProps } = findComponentFromSlug(slug);
 
+  if (!MDXComponent) {
+    return <Error />;
+  }
+
   const {
     image,
     color,
     date,
     title,
     subtitle,
-    author
-  } = mdxComponentProps.meta;
-
-  if (!MDXComponent) {
-    return <div>Post not found</div>;
-  }
+    author,
+    outdated
+  } = mdxComponentProps?.meta;
 
   return (
     <>
@@ -148,6 +151,15 @@ const Post = ({ slug }) => {
           </Cover>
 
           <Container css={{ "& img": { maxWidth: "100%" } }}>
+            {outdated && (
+              <mdx.p>
+                <Alert type="warning">
+                  <strong>Be aware.</strong> This post is very old and some
+                  things may be out of date.
+                </Alert>
+                <mdx.hr />
+              </mdx.p>
+            )}
             <MDXComponent {...mdxComponentProps} />
           </Container>
 
