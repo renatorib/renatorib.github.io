@@ -1,13 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { Box, Flex, useSystem } from "react-system";
+import { Box, Flex } from "react-system";
 import { useTheme } from "emotion-theming";
 import { LogoIcon } from "~/components/LogoIcon";
 import { Container } from "~/components/Container";
 
 export const Header = ({ size = "small", background = "transparent" }) => {
   const { titleFontFamily, titleColor } = useTheme();
-  const { media } = useSystem();
 
   return (
     <>
@@ -33,11 +32,10 @@ export const Header = ({ size = "small", background = "transparent" }) => {
                 <Box
                   as="span"
                   pl="10px"
-                  css={media({
+                  css={{
                     fontSize: size === "large" ? 22 : 18,
-                    lineHeight: "1em",
-                    display: ["none", "inline"]
-                  })}
+                    lineHeight: "1em"
+                  }}
                 >
                   <strong>rena.to</strong>
                 </Box>

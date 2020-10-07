@@ -15,7 +15,7 @@ So I had the idea to learn about the topic to create this post. We are learning 
 
 I do not intend to go into too much depth, not least because this is a concept that has existed for several years (literally since the beginning of programming), and there are hundreds of thousands of technical terms, variations, algorithms and approaches. And also because I have basic knowledge on the topic. However, the goal is to move from "I have no idea how it works" to "aaah, so this is how it works". Do not expect that you will become a compiler ninja.
 
-#### Interpreter vs. Compiler
+### Interpreter vs. Compiler
 
 You may have noticed that I mixed the terms compiler and interpreter, and you may have got a knot in your head. And yes, this confusion usually happens. In fact, both are extremely similar, what differs is the end result. Both share the same concepts of construction of lexical, syntactic, semantic analysis, etc. The difference is that in the Interpreter, as the name suggests, the language will be interpreted in the end. That is, in our case, the javascript will decompose our input, translate according to the grammatical rules that we do, and even perform the calculations and return the result, all within the js. It will be a language running inside javascript, just like javascript runs inside C. Compilers, on the other hand, have a process of generating code, and it is more common in low-level languages, such as C, which compiles for Assembly.
 
@@ -23,7 +23,7 @@ You may have noticed that I mixed the terms compiler and interpreter, and you ma
 
 This is the first step of our interpreter, and is also known as "tokenizer", "scanner" or just "lexer". The purpose of this step is to extract the tokens from our entry. This is an important process for the "disambiguation" of language syntaxes. It is in this stage that they differ that == is one token (equality) and not two = tokens (attribution). In our case, we will not have any of these tokens mentioned because we will only work with mathematical expressions (+, -, \*, /, (, ), and numbers).
 
-#### Token
+### Token
 
 Think of a token as a "useful" piece of our entry. It can be a number, a parenthesis, an operator. In more complete languages it can be a keyword, a variable, among others. At the beginning we only have a sequence of characters, which apparently do not mean anything, but at the end that piece of string that had 1 and then 0 was actually a token number of value 10. In our interpreter we will discard all empty spaces. All other characters will be part of the token, as in the example below:
 
@@ -48,7 +48,7 @@ We will represent a token as an object that has type and value properties (for l
 ];
 ```
 
-#### The lexer
+### The lexer
 
 The algorithm starts with the lexer going through the entire input string, char by char, and understanding when to save the token or continue the analysis.
 
@@ -100,7 +100,7 @@ pointer++;
 input[pointer]; // input[2] -> '*'
 ```
 
-#### Ignoring whitespaces
+### Ignoring whitespaces
 
 Whitespaces are essential for writing readable code, and in many cases they also have a syntactic role. In our case, they will just be ignored. So when our lexer finds a whitespace, it just goes on:
 
@@ -125,7 +125,7 @@ const lexer = input => {
 };
 ```
 
-#### Dealing with single character tokens
+### Dealing with single character tokens
 
 Most of the tokens that we will use are of only one character (`*`, `+`, `(`, `)`, etc), so they are the simplest to parse, since it is not necessary to look at the front characters, only the current one within the iteration:
 
@@ -210,7 +210,7 @@ const lexer = input => {
 };
 ```
 
-#### Dealing with multi-character tokens
+### Dealing with multi-character tokens
 
 There are tokens formed by more than one character, and in most languages this group forms most of the tokens, however, in our case it will only be the token Number.
 

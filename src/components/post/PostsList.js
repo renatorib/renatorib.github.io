@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "emotion-theming";
-import { Flex, Box } from "react-system";
+import { Flex, Box, useSystem } from "react-system";
 import Link from "next/link";
 
 import { Grid } from "~/components/Grid";
@@ -8,6 +8,7 @@ import { PostTeaser } from "./PostTeaser";
 
 export const PostsList = ({ title, posts = [] }) => {
   const { titleFontFamily } = useTheme();
+  const { media } = useSystem();
 
   return (
     <>
@@ -17,13 +18,13 @@ export const PostsList = ({ title, posts = [] }) => {
         css={{ padding: "60px 0 20px 0" }}
       >
         <Box
-          css={{
-            fontSize: 18,
+          css={media({
+            fontSize: [16, 18],
             fontFamily: titleFontFamily,
             letterSpacing: "2px",
             textTransform: "uppercase",
             fontWeight: "bold"
-          }}
+          })}
         >
           {title}
         </Box>
@@ -31,12 +32,16 @@ export const PostsList = ({ title, posts = [] }) => {
           <Box
             as="a"
             css={{
-              fontSize: 14,
+              fontSize: [12, 14],
               fontFamily: titleFontFamily,
               letterSpacing: "2px",
               textTransform: "uppercase",
               fontWeight: "bold",
-              opacity: 0.4
+              transition: "all 200ms ease",
+              opacity: 0.4,
+              ":hover": {
+                opacity: 0.8
+              }
             }}
           >
             Browse tags →
