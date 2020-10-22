@@ -127,7 +127,7 @@ const Post = ({ slug }) => {
           <Cover src={image} color={color} layoutId={`post-cover-${slug}`}>
             <Header />
 
-            <Container size={1024}>
+            <Container>
               <Box
                 css={media({ padding: ["40px 0 60px 0", "80px 0 100px 0"] })}
               >
