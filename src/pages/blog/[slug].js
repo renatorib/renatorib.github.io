@@ -150,18 +150,19 @@ const Post = ({ slug }) => {
             </Container>
           </Cover>
 
+          {outdated && (
+            <Container>
+              <Alert type="warning">
+                <strong>Be aware.</strong> This post is very old and some things
+                may be out of date.
+              </Alert>
+              <mdx.hr />
+            </Container>
+          )}
+
           {/* Blog body content */}
           <Container css={{ "& img": { maxWidth: "100%" } }}>
-            {outdated && (
-              <mdx.p>
-                <Alert type="warning">
-                  <strong>Be aware.</strong> This post is very old and some
-                  things may be out of date.
-                </Alert>
-                <mdx.hr />
-              </mdx.p>
-            )}
-            <MDXComponent {...mdxComponentProps} />
+            <MDXComponent />
           </Container>
 
           <Container>
