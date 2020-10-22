@@ -5,11 +5,18 @@ import { Box } from "react-system";
 import { motion } from "framer-motion";
 import { useTheme } from "emotion-theming";
 
-export const PostTeaser = ({ slug, mdx }) => {
+export const PostTeaser = ({
+  slug,
+  title,
+  subtitle,
+  author,
+  date,
+  datetime
+}) => {
   const { titleFontFamily, bgBlockColor } = useTheme();
 
   return (
-    <motion.div key={mdx.meta.title} layoutId={`post-cover-${slug}`}>
+    <motion.div key={title} layoutId={`post-cover-${slug}`}>
       <Link href="/blog/[slug]" as={`/blog/${slug}`} passHref>
         <Box
           as="a"
@@ -41,10 +48,10 @@ export const PostTeaser = ({ slug, mdx }) => {
               color: "#2f3646"
             }}
           >
-            {mdx.meta.title}
+            {title}
           </Box>
-          {mdx.meta.subtitle && (
-            <Box css={{ marginTop: 10, fontSize: 22 }}>{mdx.meta.subtitle}</Box>
+          {subtitle && (
+            <Box css={{ marginTop: 10, fontSize: 22 }}>{subtitle}</Box>
           )}
           <Box
             css={{
@@ -56,11 +63,9 @@ export const PostTeaser = ({ slug, mdx }) => {
             }}
           >
             <span css={{ fontWeight: "bold" }}>
-              <time dateTime={mdx.meta.datetime}>
-                {format(mdx.meta.date, "MMM D, YYYY")}
-              </time>
+              <time dateTime={datetime}>{format(date, "MMM D, YYYY")}</time>
             </span>
-            <span> by {mdx.meta.author.name}</span>
+            <span> by {author.name}</span>
           </Box>
         </Box>
       </Link>

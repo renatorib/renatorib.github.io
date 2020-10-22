@@ -6,7 +6,7 @@ import { Box, Flex, useSystem } from "react-system";
 import { MDXProvider } from "@mdx-js/tag";
 import { Header } from "~/sections/Header";
 import { Container } from "~/components/Container";
-import posts from "~/data/posts";
+import { getFullPostBySlug } from "~/data/posts";
 import * as mdx from "~/components/mdx";
 import { Alert } from "~/components/mdx/Alert";
 import SEO from "~/components/SEO";
@@ -83,41 +83,17 @@ const PostAuthor = ({ avatar, name, profiles, date, ...props }) => {
   );
 };
 
-const findComponentFromSlug = slug => {
-  const post = posts.find(p => p.slug === slug);
-
-  if (!post) {
-    return {};
-  }
-
-  return {
-    MDXComponent: post.mdx.default,
-    mdxComponentProps: {
-      ...post.mdx,
-      default: undefined
-    }
-  };
-};
-
 const Post = ({ slug }) => {
   const { bgColor, textColor, titleColor } = useTheme();
   const { media } = useSystem();
 
-  const { MDXComponent, mdxComponentProps } = findComponentFromSlug(slug);
+  const { Component, ...post } = getFullPostBySlug(slug);
 
-  if (!MDXComponent) {
+  if (!post.slug) {
     return <Error />;
   }
 
-  const {
-    image,
-    color,
-    date,
-    title,
-    subtitle,
-    author,
-    outdated
-  } = mdxComponentProps?.meta;
+  const { image, color, date, title, subtitle, author, outdated } = post;
 
   return (
     <>
@@ -127,7 +103,7 @@ const Post = ({ slug }) => {
           <Cover src={image} color={color} layoutId={`post-cover-${slug}`}>
             <Header />
 
-            <Container size={1024}>
+            <Container>
               <Box
                 css={media({ padding: ["40px 0 60px 0", "80px 0 100px 0"] })}
               >
@@ -161,7 +137,7 @@ const Post = ({ slug }) => {
                 <mdx.hr />
               </mdx.p>
             )}
-            <MDXComponent {...mdxComponentProps} />
+            <Component {...post} />
           </Container>
 
           <Container>
@@ -195,6 +171,8 @@ const Post = ({ slug }) => {
   );
 };
 
-Post.getInitialProps = ctx => ({ slug: ctx.query.slug });
+Post.getInitialProps = async ctx => {
+  return { slug: ctx.query.slug };
+};
 
 export default Post;

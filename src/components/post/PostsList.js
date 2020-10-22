@@ -50,7 +50,7 @@ export const PostsList = ({ title, posts = [] }) => {
       </Flex>
       <Grid gap="20px">
         {posts.map(post => (
-          <PostTeaser key={post.mdx.meta.title} {...post} />
+          <PostTeaser key={post.title} {...post} />
         ))}
       </Grid>
     </>

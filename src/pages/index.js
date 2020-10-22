@@ -4,7 +4,7 @@ import { Footer } from "~/sections/Footer";
 import { Container } from "~/components/Container";
 import SEO from "~/components/SEO";
 
-import posts from "~/data/posts";
+import { posts } from "~/data/posts";
 import { PostsList } from "~/components/post/PostsList";
 
 const Index = () => {

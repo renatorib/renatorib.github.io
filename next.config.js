@@ -16,6 +16,16 @@ const plugins = [
 const config = {
   pageExtensions: ["js", "jsx", "mdx"],
 
+  redirects: async function() {
+    return [
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true
+      }
+    ];
+  },
+
   exportPathMap: async function(defaultPathMap, { dev, dir, outDir }) {
     const STATIC_ROOT_FILES = ["CNAME", ".nojekyll"];
 

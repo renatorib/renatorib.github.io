@@ -1,12 +1,43 @@
 const fs = require("fs");
+const _eval = require("eval");
 const slugify = require("@sindresorhus/slugify");
 const mdxToHast = require("./mdx-to-hast");
+
+const getAuthor = slug => {
+  const authors = {
+    renatorib: {
+      slug: "renatorib",
+      name: "Renato Ribeiro",
+      avatar: "https://avatars2.githubusercontent.com/u/3277185?s=200",
+      profiles: [
+        { type: "twitter", url: "https://twitter.com/renatorib_" },
+        { type: "github", url: "https://github.com/renatorib_" }
+      ]
+    }
+  };
+
+  return authors[slug] ? authors[slug] : authors.renatorib;
+};
 
 const getTitle = tree => {
   const h1 = tree.children.find(n => n.tagName === "h1");
   const text = h1 && h1.children.find(n => n.type === "text");
 
   return text ? text.value : null;
+};
+
+const getFileMeta = tree => {
+  try {
+    const metaNode = tree.children.find(
+      n => n.type === "export" && n.value.startsWith("export const meta =")
+    );
+    const _exports = _eval(
+      metaNode.value.replace("export const meta =", "exports.meta =")
+    );
+    return _exports.meta;
+  } catch (e) {
+    return {};
+  }
 };
 
 const getToC = tree => {
@@ -53,8 +84,13 @@ const extract = dir => {
       date: date.toUTCString(),
       datetime: date.getTime(),
       slug,
-      dir
+      dir,
+      ...getFileMeta(tree)
     };
+
+    if (defaultMeta.author) {
+      defaultMeta.author = getAuthor(defaultMeta.author);
+    }
 
     return defaultMeta;
   } catch (e) {
@@ -67,8 +103,8 @@ const getPosts = () =>
   fs
     .readdirSync("./posts")
     .map(extract)
-    .sort((a, b) => b.datetime - a.datetime)
-    .filter(Boolean);
+    .filter(Boolean)
+    .sort((a, b) => b.datetime - a.datetime);
 
 module.exports = {
   getPosts,
