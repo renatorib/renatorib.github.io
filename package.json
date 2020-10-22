@@ -23,7 +23,7 @@
     "emotion-theming": "^10.0.27",
     "eval": "^0.1.4",
     "framer-motion": "^2.6.13",
-    "next": "^9.5.3",
+    "next": "^9.5.4",
     "next-compose-plugins": "^2.1.1",
     "parse-numeric-range": "^0.0.2",
     "react": "^16.13.1",
